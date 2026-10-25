@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>TimeTales — History Comes to Life</title>
+<title>টাইমটেলস — ইতিহাস জীবন্ত হয়ে ওঠে</title>
 
 <style>
 :root{
@@ -377,7 +376,7 @@ img{
   font-weight:700;
 }
 
-/* Categories */
+/* বিভাগসমূহ */
 .category-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -562,7 +561,7 @@ img{
   margin:0 0 12px;
 }
 
-/* Search */
+/* খুঁজুন */
 .searchbar{
   display:flex;
   gap:8px;
@@ -1010,54 +1009,54 @@ img{
   <div class="welcome-inner">
     <div class="logo" data-ic="book" data-size="52"></div>
     <h1 class="brand">TimeTales</h1>
-    <p class="tagline">History Comes to Life</p>
-    <p class="intro">Explore the real stories of the past, with stunning images and easy-to-read stories.</p>
-    <img class="welcome-pic" src="https://picturetolink.com/i/0jvSDQyPz9.jpg?auto=format&fit=crop&w=900&q=85" alt="Historic architecture">
+    <p class="tagline">ইতিহাস জীবন্ত হয়ে ওঠে</p>
+    <p class="intro">অসাধারণ ছবি ও সহজপাঠ্য গল্পের মাধ্যমে অতীতের সত্য ঘটনা আবিষ্কার করুন.</p>
+    <img class="welcome-pic" src="https://picturetolink.com/i/0jvSDQyPz9.jpg?auto=format&fit=crop&w=900&q=85" alt="ঐতিহাসিক স্থাপত্য">
     <div class="push"></div>
-    <button class="btn" onclick="tab('home')">Get Started&nbsp; →</button>
+    <button class="btn" onclick="tab('home')">শুরু করুন&nbsp; →</button>
   </div>
 </section>
 
 <section id="home" class="screen">
   <header class="header">
     <div class="wordmark">TimeTales</div>
-    <button class="icon-btn" onclick="toggleSearch()" aria-label="Search" data-ic="search"></button>
+    <button class="icon-btn" onclick="toggleখুঁজুন()" aria-label="খুঁজুন" data-ic="search"></button>
   </header>
 
   <div id="search-area" class="searchbar" style="display:none">
-    <input id="search-input" placeholder="Search history..." aria-label="Search stories" oninput="renderSearch(this.value)">
-    <button class="icon-btn" onclick="toggleSearch(false)" aria-label="Close search" data-ic="close"></button>
+    <input id="search-input" placeholder="ইতিহাস খুঁজুন..." aria-label="গল্প খুঁজুন" oninput="renderখুঁজুন(this.value)">
+    <button class="icon-btn" onclick="toggleখুঁজুন(false)" aria-label="অনুসন্ধান বন্ধ করুন" data-ic="close"></button>
   </div>
 
   <div class="hero">
-    <img src="https://picturetolink.com/i/zvowffEVqm.jpg?auto=format&fit=crop&w=1000&q=85" alt="Historic architecture">
+    <img src="https://picturetolink.com/i/zvowffEVqm.jpg?auto=format&fit=crop&w=1000&q=85" alt="ঐতিহাসিক স্থাপত্য">
     <div class="hero-copy">
-      <div class="eyebrow">Featured Story</div>
-      <h2>The Golden Age of Baghdad</h2>
-      <p>A city of knowledge, culture and innovation.</p>
-      <button class="btn" onclick="openStory('baghdad')">Read Now&nbsp; →</button>
+      <div class="eyebrow">বিশেষ গল্প</div>
+      <h2>বাগদাদের স্বর্ণযুগ</h2>
+      <p>জ্ঞান, সংস্কৃতি ও উদ্ভাবনের শহর।</p>
+      <button class="btn" onclick="openStory('baghdad')">এখনই পড়ুন&nbsp; →</button>
     </div>
   </div>
 
   <div class="section-head">
-    <h2>Featured Stories</h2>
-    <button class="text-btn" onclick="tab('categories')">See All ›</button>
+    <h2>বিশেষ গল্পসমূহ</h2>
+    <button class="text-btn" onclick="tab('categories')">সব দেখুন ›</button>
   </div>
   <div id="featured-list" class="story-list"></div>
 </section>
 
 <section id="categories" class="screen">
   <header class="header">
-    <button class="icon-btn" onclick="tab('home')" aria-label="Back to home" data-ic="back"></button>
-    <div class="wordmark" style="font-size:24px">Categories</div>
-    <button class="icon-btn" onclick="toggleSearch(true)" aria-label="Search" data-ic="search"></button>
+    <button class="icon-btn" onclick="tab('home')" aria-label="হোমে ফিরুন" data-ic="back"></button>
+    <div class="wordmark" style="font-size:24px">বিভাগসমূহ</div>
+    <button class="icon-btn" onclick="toggleখুঁজুন(true)" aria-label="খুঁজুন" data-ic="search"></button>
   </header>
   <div id="category-grid" class="category-grid"></div>
 </section>
 
 <section id="catlist" class="screen">
   <div class="backline">
-    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <button class="icon-btn" onclick="back()" aria-label="ফিরে যান" data-ic="back"></button>
     <h1 id="catlist-title"></h1>
   </div>
   <div id="catlist-items" class="story-list"></div>
@@ -1065,46 +1064,46 @@ img{
 
 <section id="story" class="screen">
   <div class="backline">
-    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <button class="icon-btn" onclick="back()" aria-label="ফিরে যান" data-ic="back"></button>
     <h1 id="story-title"></h1>
   </div>
   <img id="story-cover" class="cover" alt="">
   <p id="story-desc" class="description"></p>
   <div class="section-head">
-    <h2>Chapters</h2>
+    <h2>অধ্যায়সমূহ</h2>
     <span class="meta" id="chapter-count"></span>
   </div>
   <div id="chapters"></div>
-  <p class="note">Images are illustrative, not authentic photographs of the period.</p>
+  <p class="note">ছবিগুলো বোঝানোর জন্য ব্যবহার করা হয়েছে; এগুলো সেই সময়ের আসল আলোকচিত্র নয়।</p>
 </section>
 
 <section id="reader" class="screen">
   <div class="reader-toolbar">
-    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <button class="icon-btn" onclick="back()" aria-label="ফিরে যান" data-ic="back"></button>
     <h1 id="reader-top"></h1>
-    <button class="icon-btn" id="bookmark-button" onclick="toggleChapterBookmark(ci)" aria-label="Save bookmark"></button>
+    <button class="icon-btn" id="bookmark-button" onclick="toggleChapterBookmark(ci)" aria-label="সংরক্ষণ করুন"></button>
   </div>
   <div id="reader-chapters"></div>
-  <p class="note">Images are illustrative, not authentic photographs of the period.</p>
+  <p class="note">ছবিগুলো বোঝানোর জন্য ব্যবহার করা হয়েছে; এগুলো সেই সময়ের আসল আলোকচিত্র নয়।</p>
 </section>
 
 <section id="bookmarks" class="screen">
   <header class="header">
-    <div class="wordmark" style="font-size:25px">Bookmarks</div>
+    <div class="wordmark" style="font-size:25px">সংরক্ষিত অধ্যায়</div>
   </header>
-  <p class="description">Chapters you save will appear here on this device.</p>
+  <p class="description">তুমি যে অধ্যায়গুলো সংরক্ষণ করবে, সেগুলো এই যন্ত্রে এখানে দেখা যাবে।</p>
   <div id="saved-list" class="story-list"></div>
 </section>
 
-<nav id="nav" class="bottom-nav" aria-label="Main navigation">
+<nav id="nav" class="bottom-nav" aria-label="প্রধান নেভিগেশন">
   <button class="nav-item active" data-page="home" onclick="tab('home')">
-    <span class="ni" data-ic="home"></span>Home
+    <span class="ni" data-ic="home"></span>হোম
   </button>
   <button class="nav-item" data-page="categories" onclick="tab('categories')">
-    <span class="ni" data-ic="grid"></span>Categories
+    <span class="ni" data-ic="grid"></span>বিভাগসমূহ
   </button>
   <button class="nav-item" data-page="bookmarks" onclick="tab('bookmarks')">
-    <span class="ni" data-ic="bookmark"></span>Bookmarks
+    <span class="ni" data-ic="bookmark"></span>সংরক্ষিত অধ্যায়
   </button>
 </nav>
 
@@ -1116,117 +1115,118 @@ img{
 const I={
   baghdad:"https://picturetolink.com/i/tgBxHJMuxt.jpg",
   rome:"https://picturetolink.com/i/16lCPcTGwU.jpg",
-  scholar:"https://picturetolink.com/i/16lCPcTGwU.jpg",
+  scholar:"",
   market:"https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=900&q=85",
   caravan:"https://picturetolink.com/i/eRdDMeOvWx.jpg",
-  king:"https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=800&q=85"
+  king:"https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=800&q=85",
+  war :"up"
 };
 const stories = [
   {
     id: "baghdad",
-    title: "The Golden Age of Baghdad",
-    cat: "Ancient Civilizations",
-    desc: "Discover how Baghdad became one of the world's greatest centers of science, learning, trade, and culture.",
+    title: "বাগদাদের স্বর্ণযুগ",
+    cat: "প্রাচীন সভ্যতা",
+    desc: "জানুন কীভাবে বাগদাদ বিজ্ঞান, শিক্ষা, বাণিজ্য ও সংস্কৃতির অন্যতম প্রধান কেন্দ্রে পরিণত হয়েছিল।",
     img: I.baghdad,
     chapters: [
       {
-        title: "1. The Birth of Baghdad",
-        sub: "A new capital rises",
+        title: "১. বাগদাদের জন্ম",
+        sub: "নতুন রাজধানীর উত্থান",
         img: "https://picturetolink.com/i/410pVRz16Z.jpg",
-        heading: "The Birth of a Great City",
+        heading: "এক মহান শহরের জন্ম",
         body: [
-          "In 762 CE, the Abbasid caliph Al-Mansur founded a new capital near the Tigris River. He chose the location carefully because it was connected to important trade routes between Asia, Africa, and Europe. The new city would become one of the most influential places in the medieval world.",
-          "Baghdad was designed as a planned circular city, with important buildings near its center. Its location helped merchants, scholars, travelers, and officials reach the city from many directions. What began as a political capital soon developed into a center of wealth, culture, and knowledge."
+          "৭৬২ খ্রিষ্টাব্দে আব্বাসীয় খলিফা আল-মানসুর টাইগ্রিস নদীর কাছে একটি নতুন রাজধানী প্রতিষ্ঠা করেন। এশিয়া, আফ্রিকা ও ইউরোপের গুরুত্বপূর্ণ বাণিজ্যপথের সঙ্গে সংযোগ থাকায় তিনি স্থানটি সতর্কভাবে বেছে নিয়েছিলেন। নতুন শহরটি মধ্যযুগীয় বিশ্বের অন্যতম প্রভাবশালী স্থানে পরিণত হয়।",
+          "বাগদাদকে পরিকল্পিত বৃত্তাকার শহর হিসেবে গড়ে তোলা হয়েছিল; এর কেন্দ্রের কাছে ছিল গুরুত্বপূর্ণ ভবন। অবস্থানের কারণে বহু দিক থেকে ব্যবসায়ী, পণ্ডিত, পর্যটক ও কর্মকর্তারা এখানে আসতে পারতেন। রাজনৈতিক রাজধানী হিসেবে শুরু হলেও শহরটি দ্রুত সম্পদ, সংস্কৃতি ও জ্ঞানের কেন্দ্রে পরিণত হয়।",
         ]
       },
       {
-        title: "2. The Circular City",
-        sub: "A remarkable urban design",
+        title: "২. বৃত্তাকার শহর",
+        sub: "অসাধারণ নগর-নকশা",
         img: "https://picturetolink.com/i/slWx5casMn.jpg",
-        heading: "A City Designed in a Circle",
+        heading: "বৃত্তাকারে নকশা করা শহর",
         body: [
-          "Early Baghdad was famous for its circular design. Historical accounts describe defensive walls, gates, administrative buildings, and the caliph's palace near the center. The design reflected the importance of organization and security in the new Abbasid capital.",
-          "Although the original Round City changed greatly over time, its design remains an important part of Baghdad's history. The city expanded beyond its original walls, developing neighborhoods, markets, religious buildings, and busy streets along the Tigris River."
+          "প্রাচীন বাগদাদ তার বৃত্তাকার নকশার জন্য বিখ্যাত ছিল। ঐতিহাসিক বিবরণে প্রতিরক্ষাপ্রাচীর, ফটক, প্রশাসনিক ভবন এবং কেন্দ্রের কাছে খলিফার প্রাসাদের কথা বলা হয়েছে। এই নকশা নতুন আব্বাসীয় রাজধানীতে সংগঠন ও নিরাপত্তার গুরুত্ব প্রকাশ করত।",
+          "সময়ের সঙ্গে মূল গোলাকার শহরটি অনেক বদলে গেলেও তার নকশা বাগদাদের ইতিহাসের গুরুত্বপূর্ণ অংশ। শহরটি পুরোনো দেয়ালের বাইরে বিস্তৃত হয়; টাইগ্রিস নদীর তীরে গড়ে ওঠে নতুন পাড়া, বাজার, ধর্মীয় স্থাপনা ও ব্যস্ত সড়ক।",
         ]
       },
       {
-        title: "3. The Abbasid Caliphs",
-        sub: "Leaders of a powerful era",
+        title: "৩. আব্বাসীয় খলিফারা",
+        sub: "শক্তিশালী যুগের শাসকেরা",
         img: "https://picturetolink.com/i/zx1RKlrMbg.jpg",
-        heading: "The Rulers Behind the Golden Age",
+        heading: "স্বর্ণযুগের পেছনের শাসকেরা",
         body: [
-          "The Abbasid dynasty came to power in 750 CE and moved its capital to Baghdad in 762 CE. Its rulers governed a vast empire connected by trade, scholarship, and diverse cultural traditions. Their decisions helped shape the city's political and intellectual life.",
-          "Some Abbasid caliphs supported scholars, translators, physicians, mathematicians, and poets. Their support was not identical from one ruler to another, but Baghdad benefited from generations of people who helped knowledge travel across languages and regions."
+          "আব্বাসীয় রাজবংশ ৭৫০ খ্রিষ্টাব্দে ক্ষমতায় আসে এবং ৭৬২ সালে রাজধানী বাগদাদে স্থানান্তর করে। তাদের শাসনে বিশাল সাম্রাজ্য বাণিজ্য, পাণ্ডিত্য ও নানা সাংস্কৃতিক ঐতিহ্যের মাধ্যমে যুক্ত ছিল। শাসকদের সিদ্ধান্ত শহরের রাজনৈতিক ও বৌদ্ধিক জীবন গড়ে তুলতে সাহায্য করে।",
+          "কিছু আব্বাসীয় খলিফা পণ্ডিত, অনুবাদক, চিকিৎসক, গণিতবিদ ও কবিদের পৃষ্ঠপোষকতা করেছিলেন। সব শাসকের সময়ে সহায়তা একরকম ছিল না, তবে বহু প্রজন্মের মানুষের প্রচেষ্টায় ভাষা ও অঞ্চল পেরিয়ে জ্ঞান ছড়িয়ে পড়ে।",
         ]
       },
       {
-        title: "4. The House of Wisdom",
-        sub: "A famous center of learning",
+        title: "৪. জ্ঞানভবন",
+        sub: "বিখ্যাত জ্ঞানচর্চার কেন্দ্র",
         img: "https://picturetolink.com/i/Ht1v0GJ1vP.jpg",
-        heading: "The Search for Knowledge",
+        heading: "জ্ঞানের সন্ধান",
         body: [
-          "Baghdad became associated with a celebrated scholarly institution often called the House of Wisdom, or Bayt al-Hikma. During the Abbasid period, scholars worked with books and ideas from Greek, Persian, Indian, and other intellectual traditions.",
-          "Translators and researchers helped preserve and develop knowledge in subjects such as mathematics, astronomy, medicine, and philosophy. Scholarship was not limited to one building; libraries, private collections, teaching circles, and courts also contributed to Baghdad's intellectual life."
+          "বাগদাদ এমন এক বিখ্যাত বিদ্যাচর্চার প্রতিষ্ঠানের সঙ্গে যুক্ত, যা সাধারণত হাউস অব উইজডম বা বাইতুল হিকমা নামে পরিচিত। আব্বাসীয় যুগে পণ্ডিতেরা গ্রিক, পারসিক, ভারতীয় ও অন্যান্য জ্ঞানধারার বই ও ধারণা নিয়ে কাজ করতেন।",
+          "অনুবাদক ও গবেষকেরা গণিত, জ্যোতির্বিজ্ঞান, চিকিৎসা ও দর্শনের জ্ঞান সংরক্ষণ এবং বিকাশে সাহায্য করেন। বিদ্যাচর্চা কেবল একটি ভবনে সীমাবদ্ধ ছিল না; গ্রন্থাগার, ব্যক্তিগত সংগ্রহ, পাঠচক্র ও রাজদরবারও বাগদাদের বৌদ্ধিক জীবনে অবদান রাখে।",
         ]
       },
       {
-        title: "5. Scientists and Inventors",
-        sub: "Ideas that traveled across the world",
+        title: "৫. বিজ্ঞানী ও উদ্ভাবকেরা",
+        sub: "বিশ্বজুড়ে ছড়িয়ে পড়া ধারণা",
         img: "https://picturetolink.com/i/tMhvvSfv6C.jpg",
-        heading: "The Minds That Changed History",
+        heading: "ইতিহাস বদলে দেওয়া মনীষীরা",
         body: [
-          "Baghdad attracted brilliant thinkers. The mathematician Muhammad ibn Musa al-Khwarizmi made important contributions to algebra and calculation. The word algorithm is derived from a Latinized form of his name, while the word algebra comes from the title of one of his works.",
-          "Physicians, astronomers, mathematicians, and philosophers built on earlier discoveries and developed new approaches. Their work became part of a wider international exchange of knowledge, influencing later scholars in the Middle East, North Africa, and Europe."
+          "বাগদাদে বহু প্রতিভাবান চিন্তাবিদ এসেছিলেন। গণিতবিদ মুহাম্মদ ইবন মুসা আল-খোয়ারিজমি বীজগণিত ও গণনার ক্ষেত্রে গুরুত্বপূর্ণ অবদান রাখেন। ‘অ্যালগরিদম’ শব্দটি তাঁর নামের লাতিন রূপ থেকে এসেছে, আর ‘অ্যালজেব্রা’ এসেছে তাঁর একটি গ্রন্থের শিরোনাম থেকে।",
+          "চিকিৎসক, জ্যোতির্বিদ, গণিতবিদ ও দার্শনিকেরা আগের আবিষ্কারের ওপর ভিত্তি করে নতুন পদ্ধতি তৈরি করেন। তাঁদের কাজ আন্তর্জাতিক জ্ঞানবিনিময়ের অংশ হয়ে ওঠে এবং মধ্যপ্রাচ্য, উত্তর আফ্রিকা ও ইউরোপের পরবর্তী পণ্ডিতদের প্রভাবিত করে।",
         ]
       },
       {
-        title: "6. The Markets of Baghdad",
-        sub: "A meeting place for merchants",
+        title: "৬. বাগদাদের বাজার",
+        sub: "ব্যবসায়ীদের মিলনস্থল",
         img:"https://picturetolink.com/i/nhO568XcCL.jpg",
-        heading: "The City of Busy Markets",
+        heading: "ব্যস্ত বাজারের শহর",
         body: [
-          "Baghdad stood at the crossroads of major trading networks. Its markets offered goods that included textiles, spices, metalwork, paper, ceramics, and other products brought from distant regions. Merchants connected the city with ports, caravan routes, and neighboring cities.",
-          "Markets were more than places to buy and sell. They were also places where languages, customs, news, and ideas met. A traveler might hear stories from distant lands while a craftsperson sold goods made using skills passed down through generations."
+          "বাগদাদ ছিল গুরুত্বপূর্ণ বাণিজ্যপথের সংযোগস্থলে। বাজারে কাপড়, মসলা, ধাতুর কাজ, কাগজ, মৃৎপাত্রসহ দূরদূরান্ত থেকে আনা নানা পণ্য পাওয়া যেত। ব্যবসায়ীরা শহরটিকে বন্দর, কাফেলার পথ ও আশপাশের শহরের সঙ্গে যুক্ত করতেন।",
+          "বাজার শুধু কেনাবেচার জায়গা ছিল না; সেখানে ভাষা, রীতিনীতি, খবর ও ধারণারও আদানপ্রদান হতো। দূরদেশের গল্প শুনতে শুনতে কোনো ভ্রমণকারী হয়তো এমন কারিগরের তৈরি পণ্য কিনতেন, যার দক্ষতা প্রজন্মের পর প্রজন্ম ধরে চলে আসছিল।",
         ]
       },
       {
-        title: "7. Books, Paper, and Libraries",
-        sub: "Knowledge easier to share",
+        title: "৭. বই, কাগজ ও গ্রন্থাগার",
+        sub: "জ্ঞান ভাগ করা আরও সহজ",
         img: "https://picturetolink.com/i/ors87wqpj7.jpg",
-        heading: "The Power of the Written Word",
+        heading: "লিখিত শব্দের শক্তি",
         body: [
-          "Paper-making techniques spread westward from China through Central Asia and the Islamic world. Paper became increasingly important for writing, copying books, recording business transactions, and sharing scholarly ideas.",
-          "Baghdad's intellectual culture benefited from the availability of written works and the efforts of scribes, translators, teachers, and collectors. Books connected scholars across time, allowing them to study earlier arguments, compare observations, and add new discoveries."
+          "কাগজ তৈরির কৌশল চীন থেকে মধ্য এশিয়া হয়ে পশ্চিমে, ইসলামী জগতে ছড়িয়ে পড়ে। লেখা, বই নকল, ব্যবসার হিসাব রাখা এবং পাণ্ডিত্যপূর্ণ ধারণা ভাগ করে নেওয়ার জন্য কাগজ ক্রমেই গুরুত্বপূর্ণ হয়ে ওঠে।",
+          "লিখিত গ্রন্থের সহজলভ্যতা এবং লেখক, অনুবাদক, শিক্ষক ও সংগ্রাহকদের প্রচেষ্টায় বাগদাদের জ্ঞানচর্চা সমৃদ্ধ হয়। বই বিভিন্ন সময়ের পণ্ডিতদের যুক্তি, পর্যবেক্ষণ ও নতুন আবিষ্কারের সঙ্গে যুক্ত করত।",
         ]
       },
       {
-        title: "8. Life Along the Tigris",
-        sub: "Everyday life in a great city",
+        title: "৮. টাইগ্রিসের তীরে জীবন",
+        sub: "মহান শহরের দৈনন্দিন জীবন",
         img:"https://picturetolink.com/i/rbCnQqKNJd.jpg",
-        heading: "People and Daily Life",
+        heading: "মানুষ ও দৈনন্দিন জীবন",
         body: [
-          "Life in medieval Baghdad varied greatly depending on a person's wealth, occupation, and social position. The city included officials, merchants, artisans, laborers, scholars, sailors, cooks, teachers, and families living in different kinds of neighborhoods.",
-          "The Tigris River helped support transport, trade, and daily needs. Streets and markets could be crowded, while homes, gardens, mosques, workshops, and learning spaces formed part of the city's wider urban life. Baghdad was a living community, not just a center of rulers and scholars."
+          "মধ্যযুগীয় বাগদাদে মানুষের জীবন নির্ভর করত সম্পদ, পেশা ও সামাজিক অবস্থানের ওপর। শহরে কর্মকর্তা, ব্যবসায়ী, কারিগর, শ্রমিক, পণ্ডিত, নাবিক, রাঁধুনি, শিক্ষক ও নানা পাড়ায় বসবাসকারী পরিবার ছিল।",
+          "টাইগ্রিস নদী যাতায়াত, বাণিজ্য ও দৈনন্দিন প্রয়োজন মেটাতে সাহায্য করত। ব্যস্ত রাস্তা ও বাজারের পাশাপাশি বাড়ি, বাগান, মসজিদ, কর্মশালা ও শিক্ষার স্থান শহরের জীবনের অংশ ছিল। বাগদাদ শুধু শাসক ও পণ্ডিতদের কেন্দ্র নয়, একটি জীবন্ত জনপদও ছিল।",
         ]
       },
       {
-        title: "9. Stories, Poetry, and Culture",
-        sub: "A city rich in imagination",
+        title: "৯. গল্প, কবিতা ও সংস্কৃতি",
+        sub: "কল্পনায় সমৃদ্ধ শহর",
         img: "https://picturetolink.com/i/1MFZggTGnJ.jpg",
-        heading: "The Cultural Life of Baghdad",
+        heading: "বাগদাদের সাংস্কৃতিক জীবন",
         body: [
-          "Baghdad became famous for literature, poetry, music, storytelling, and intellectual debate. Writers drew inspiration from court life, ordinary people, travel, humor, history, and moral questions.",
-          "The collection known as One Thousand and One Nights is associated with a long tradition of storytelling that developed across different cultures and centuries. It should not be treated as a simple record of Abbasid Baghdad, but its tales help illustrate the lasting appeal of stories about merchants, rulers, travelers, and extraordinary adventures."
+          "বাগদাদ সাহিত্য, কবিতা, সংগীত, গল্প বলা ও বুদ্ধিবৃত্তিক বিতর্কের জন্য পরিচিত হয়ে ওঠে। লেখকেরা রাজদরবার, সাধারণ মানুষ, ভ্রমণ, হাস্যরস, ইতিহাস ও নৈতিক প্রশ্ন থেকে অনুপ্রেরণা নিতেন।",
+          "‘এক হাজার এক রজনী’ নামে পরিচিত গল্পসংকলন বহু সংস্কৃতি ও শতাব্দীজুড়ে বিকশিত গল্প বলার ঐতিহ্যের সঙ্গে যুক্ত। একে আব্বাসীয় বাগদাদের সরাসরি ইতিহাস হিসেবে দেখা উচিত নয়; তবে বণিক, শাসক, ভ্রমণকারী ও আশ্চর্য অভিযানের গল্পের স্থায়ী আকর্ষণ এটি দেখায়।",
         ]
       },
       {
-        title: "10. The Fall and the Legacy",
-        sub: "The end of an era, not the end of its influence",
+        title: "১০. পতন ও উত্তরাধিকার",
+        sub: "এক যুগের অবসান, প্রভাবের নয়",
         img: "https://picturetolink.com/i/ltATRVQbb4.jpg",
-        heading: "Baghdad's Lasting Legacy",
+        heading: "বাগদাদের স্থায়ী উত্তরাধিকার",
         body: [
-          "In 1258, Mongol forces captured Baghdad after a siege. The city suffered immense destruction, and the Abbasid caliphate's rule in Baghdad came to an end. The catastrophe marked a major turning point in the city's history.",
-          "Yet the knowledge developed, translated, collected, and shared across the Abbasid era did not simply disappear. Books, scientific methods, mathematical ideas, and literary traditions continued to influence later generations. Baghdad's history remains a powerful reminder that cities can shape world civilization through learning and exchange."
+          "১২৫৮ সালে অবরোধের পর মঙ্গোল বাহিনী বাগদাদ দখল করে। শহরে ব্যাপক ধ্বংসযজ্ঞ হয় এবং বাগদাদে আব্বাসীয় খিলাফতের শাসনের অবসান ঘটে। এই বিপর্যয় শহরের ইতিহাসে বড় মোড় তৈরি করে।",
+          "তবে আব্বাসীয় যুগে বিকশিত, অনূদিত, সংগৃহীত ও ভাগ করে নেওয়া জ্ঞান হারিয়ে যায়নি। বই, বৈজ্ঞানিক পদ্ধতি, গণিতের ধারণা ও সাহিত্যিক ঐতিহ্য পরবর্তী প্রজন্মকে প্রভাবিত করতে থাকে। বাগদাদের ইতিহাস মনে করিয়ে দেয়, জ্ঞান ও আদানপ্রদানের মাধ্যমে শহর বিশ্বসভ্যতাকে গড়ে তুলতে পারে।",
         ]
       }
     ]
@@ -1234,328 +1234,218 @@ const stories = [
 
   {
     id: "rome",
-    title: "The Rise and Fall of Rome",
-    cat: "Kings & Empires",
-    desc: "Explore the Roman world, from its legendary beginnings to its emperors, engineering achievements, and transformation.",
+    title: "রোমের উত্থান ও পতন",
+    cat: "রাজা ও সাম্রাজ্য",
+    desc: "রোমের কিংবদন্তিময় সূচনা থেকে সম্রাট, প্রকৌশল কীর্তি ও পরিবর্তনের ইতিহাস জানুন।",
     img: I.rome,
     chapters: [
       {
-        title: "1. The Legendary Beginning",
-        sub: "The story of Romulus and Remus",
+        title: "১. কিংবদন্তির সূচনা",
+        sub: "রোমুলাস ও রেমুসের কাহিনি",
         img:"https://picturetolink.com/i/Wo1T8WtanR.jpg",
-        heading: "How Rome Began",
+        heading: "রোমের সূচনা কীভাবে",
         body: [
-          "According to Roman legend, Rome was founded by Romulus in 753 BCE. The story tells of twin brothers, Romulus and Remus, who were rescued and raised by a she-wolf. As adults, they became involved in a dispute that ended with Romulus becoming the city's legendary founder.",
-          "Archaeology shows that settlements existed on the hills around Rome long before the traditional founding date. Over time, these communities grew together into a city. The legend became an important part of Roman identity, while archaeological evidence helps historians understand how the city actually developed."
+          "রোমান কিংবদন্তি অনুযায়ী, রোমুলাস ৭৫৩ খ্রিষ্টপূর্বাব্দে রোম প্রতিষ্ঠা করেন। কাহিনিতে রোমুলাস ও রেমুস নামে যমজ ভাইয়ের কথা বলা হয়, যাদের একটি মাদি নেকড়ে উদ্ধার করে লালন-পালন করেছিল। বড় হয়ে তাদের বিরোধ হয় এবং শেষ পর্যন্ত রোমুলাস শহরের কিংবদন্তিতুল্য প্রতিষ্ঠাতা হন।",
+          "প্রত্নতাত্ত্বিক প্রমাণে দেখা যায়, প্রচলিত প্রতিষ্ঠাবর্ষের অনেক আগে থেকেই রোমের পাহাড়গুলোর আশপাশে বসতি ছিল। সময়ের সঙ্গে এসব সম্প্রদায় একত্র হয়ে শহরে রূপ নেয়। কিংবদন্তিটি রোমান পরিচয়ের গুরুত্বপূর্ণ অংশ, আর প্রত্নতত্ত্ব শহরটির প্রকৃত বিকাশ বুঝতে সাহায্য করে।",
         ]
       },
       {
-        title: "2. The Roman Kingdom",
-        sub: "Before the Republic",
+        title: "২. রোমান রাজতন্ত্র",
+        sub: "প্রজাতন্ত্রের আগে",
         img: "https://picturetolink.com/i/gHH7Ynkzdk.jpg",
-        heading: "Rome's Earliest Government",
+        heading: "রোমের প্রাচীনতম শাসনব্যবস্থা",
         body: [
-          "Roman tradition describes the earliest period of Rome as a kingdom ruled by a succession of kings. The historical details are difficult to verify because many surviving accounts were written long after the events they describe.",
-          "Around 509 BCE, according to traditional Roman chronology, the monarchy was overthrown and a republic was established. This transition introduced a new political system in which elected officials and institutions shared power, although political rights remained unequal."
+          "রোমান ঐতিহ্য অনুযায়ী, রোমের প্রাচীনতম সময়ে ধারাবাহিক রাজারা রাজ্য শাসন করতেন। এসব ঘটনার বহু পরে টিকে থাকা বিবরণ লেখা হওয়ায় ঐতিহাসিক খুঁটিনাটি যাচাই করা কঠিন।",
+          "প্রচলিত রোমান কালপঞ্জি অনুসারে, প্রায় ৫০৯ খ্রিষ্টপূর্বাব্দে রাজতন্ত্র উৎখাত হয় এবং প্রজাতন্ত্র প্রতিষ্ঠিত হয়। নির্বাচিত কর্মকর্তা ও প্রতিষ্ঠান ক্ষমতা ভাগ করে নেওয়ার নতুন ব্যবস্থা চালু হয়, যদিও রাজনৈতিক অধিকার সবার সমান ছিল না।",
         ]
       },
       {
-        title: "3. The Roman Republic",
-        sub: "Power, citizenship, and politics",
+        title: "৩. রোমান প্রজাতন্ত্র",
+        sub: "ক্ষমতা, নাগরিকত্ব ও রাজনীতি",
         img: "https://picturetolink.com/i/E2wBQrmDmS.jpg",
-        heading: "A New Way to Govern",
+        heading: "শাসনের নতুন পদ্ধতি",
         body: [
-          "The Roman Republic developed institutions such as the Senate, magistracies, and popular assemblies. Political life involved alliances, competition, public speaking, and debates over who should hold authority.",
-          "The Republic was not a modern democracy. Wealthy families held considerable influence, and women, enslaved people, and many residents did not enjoy the same political rights as male citizens. Even so, Roman republican institutions left a lasting mark on later political thought."
+          "রোমান প্রজাতন্ত্রে সিনেট, সরকারি পদ এবং জনসমাবেশের মতো প্রতিষ্ঠান গড়ে ওঠে। রাজনৈতিক জীবনে জোট, প্রতিযোগিতা, জনসমক্ষে বক্তৃতা এবং কারা ক্ষমতা পাবে তা নিয়ে বিতর্ক ছিল।",
+          "প্রজাতন্ত্র আধুনিক গণতন্ত্র ছিল না। ধনী পরিবারগুলোর প্রভাব ছিল ব্যাপক; নারী, দাসত্বে আবদ্ধ মানুষ এবং বহু বাসিন্দা পুরুষ নাগরিকদের মতো রাজনৈতিক অধিকার পেতেন না। তবু রোমান প্রজাতান্ত্রিক প্রতিষ্ঠান পরবর্তী রাজনৈতিক চিন্তায় দীর্ঘস্থায়ী প্রভাব ফেলে।",
         ]
       },
       {
-        title: "4. The Roman Army",
-        sub: "The force behind expansion",
+        title: "৪. রোমান সেনাবাহিনী",
+        sub: "সম্প্রসারণের শক্তি",
         img: "https://picturetolink.com/i/wWCOQbBusF.jpg",
-        heading: "How Rome Built an Empire",
+        heading: "রোম কীভাবে সাম্রাজ্য গড়ল",
         body: [
-          "Roman military organization helped the Republic expand across the Italian peninsula and beyond. Soldiers served in disciplined units, built camps and roads, and supported campaigns that brought Rome into conflict with rival powers.",
-          "Military success also brought challenges. Conquered territories needed administration, and wealth from expansion changed Roman society. Generals gained influence, while disputes over land, citizenship, and political power contributed to serious internal tensions."
+          "রোমের সামরিক সংগঠন প্রজাতন্ত্রকে ইতালীয় উপদ্বীপ এবং তার বাইরেও বিস্তৃত হতে সাহায্য করে। শৃঙ্খলাবদ্ধ দলে সৈন্যরা কাজ করত, শিবির ও রাস্তা বানাত এবং প্রতিদ্বন্দ্বী শক্তির বিরুদ্ধে অভিযান চালাত।",
+          "সামরিক সাফল্য নতুন সমস্যাও নিয়ে আসে। বিজিত অঞ্চল শাসন করতে হতো, আর সম্প্রসারণের সম্পদ রোমান সমাজকে বদলে দেয়। সেনাপতিরা প্রভাবশালী হয়ে ওঠেন; জমি, নাগরিকত্ব ও রাজনৈতিক ক্ষমতা নিয়ে বিরোধ অভ্যন্তরীণ উত্তেজনা বাড়ায়।",
         ]
       },
       {
-        title: "5. Julius Caesar",
-        sub: "A general changes Roman politics",
+        title: "৫. জুলিয়াস সিজার",
+        sub: "এক সেনাপতি রোমের রাজনীতি বদলান",
         img: "https://picturetolink.com/i/VGXNA3zEjF.jpg",
-        heading: "The Rise of Julius Caesar",
+        heading: "জুলিয়াস সিজারের উত্থান",
         body: [
-          "Julius Caesar became one of Rome's most influential generals and politicians. His campaigns in Gaul increased his fame and brought large territories under Roman control. His growing power, however, alarmed political rivals.",
-          "In 49 BCE, Caesar crossed the Rubicon River with his army, beginning a civil war. He eventually became Rome's dominant leader and introduced reforms, but his concentration of power created deep opposition among senators who feared the end of the Republic."
+          "জুলিয়াস সিজার রোমের অন্যতম প্রভাবশালী সেনাপতি ও রাজনীতিবিদ হয়ে ওঠেন। গল অঞ্চলে তাঁর অভিযান খ্যাতি বাড়ায় এবং বিশাল ভূখণ্ড রোমের নিয়ন্ত্রণে আনে। তবে তাঁর ক্রমবর্ধমান ক্ষমতা রাজনৈতিক প্রতিদ্বন্দ্বীদের উদ্বিগ্ন করে।",
+          "৪৯ খ্রিষ্টপূর্বাব্দে সিজার সেনাবাহিনী নিয়ে রুবিকন নদী পার হন, যার ফলে গৃহযুদ্ধ শুরু হয়। শেষ পর্যন্ত তিনি রোমের প্রধান নেতা হন এবং সংস্কার চালু করেন; কিন্তু ক্ষমতা নিজের হাতে কেন্দ্রীভূত করায় প্রজাতন্ত্রের অবসানের আশঙ্কায় বহু সিনেটর তাঁর বিরোধিতা করেন।",
         ]
       },
       {
-        title: "6. The First Emperor",
-        sub: "Augustus transforms Rome",
+        title: "৬. প্রথম সম্রাট",
+        sub: "অগাস্টাস রোমকে বদলে দেন",
         img:"https://picturetolink.com/i/QRa2vGd7jY.jpg",
-        heading: "From Republic to Empire",
+        heading: "প্রজাতন্ত্র থেকে সাম্রাজ্য",
         body: [
-          "After years of civil war following Caesar's assassination in 44 BCE, Octavian defeated his rivals. In 27 BCE, he received the title Augustus and established a new political order that historians identify as the beginning of the Roman Empire.",
-          "Augustus presented himself as restoring stability and traditional institutions while retaining decisive authority. His reign began a long period in which emperors ruled Rome, though the empire continued to face political struggles, border conflicts, and changing economic conditions."
+          "৪৪ খ্রিষ্টপূর্বাব্দে সিজার হত্যার পর কয়েক বছরের গৃহযুদ্ধে অক্টাভিয়ান প্রতিদ্বন্দ্বীদের পরাজিত করেন। ২৭ খ্রিষ্টপূর্বাব্দে তিনি ‘অগাস্টাস’ উপাধি পান এবং নতুন রাজনৈতিক ব্যবস্থা প্রতিষ্ঠা করেন, যাকে ইতিহাসবিদেরা রোমান সাম্রাজ্যের সূচনা বলে চিহ্নিত করেন।",
+          "অগাস্টাস নিজেকে স্থিতিশীলতা ও ঐতিহ্যবাহী প্রতিষ্ঠান পুনরুদ্ধারকারী হিসেবে তুলে ধরলেও গুরুত্বপূর্ণ ক্ষমতা নিজের হাতে রাখেন। তাঁর শাসনের মাধ্যমে সম্রাটদের দীর্ঘ যুগ শুরু হয়; তবে সাম্রাজ্যকে রাজনৈতিক দ্বন্দ্ব, সীমান্ত সংঘাত ও অর্থনৈতিক পরিবর্তনের মুখোমুখি হতে হয়েছে।",
         ]
       },
       {
-        title: "7. Roads and Engineering",
-        sub: "Building connections across the empire",
+        title: "৭. সড়ক ও প্রকৌশল",
+        sub: "সাম্রাজ্যজুড়ে যোগাযোগ গড়া",
         img: "https://picturetolink.com/i/d0BcnZK57U.jpg",
-        heading: "The Builders of Rome",
+        heading: "রোমের নির্মাতারা",
         body: [
-          "Roman engineers built roads, bridges, harbors, aqueducts, and public buildings. Their roads helped armies travel and made it easier for officials, merchants, and travelers to move between cities.",
-          "Aqueducts carried water over long distances using carefully designed gradients and structures. Roman concrete and architectural techniques also supported large public works. These projects required planning, labor, materials, and maintenance, showing how infrastructure helped hold a vast empire together."
+          "রোমান প্রকৌশলীরা রাস্তা, সেতু, বন্দর, জলবাহী নালা ও সরকারি ভবন নির্মাণ করেন। এসব রাস্তা সেনাবাহিনীর যাতায়াত সহজ করত এবং কর্মকর্তা, ব্যবসায়ী ও ভ্রমণকারীদের শহর থেকে শহরে চলাচলে সাহায্য করত।",
+          "জলবাহী নালা পরিকল্পিত ঢাল ও কাঠামোর সাহায্যে দূর থেকে পানি আনত। রোমান কংক্রিট ও স্থাপত্যকৌশল বড় বড় নির্মাণকাজ সম্ভব করেছিল। এসব প্রকল্পে পরিকল্পনা, শ্রম, উপকরণ ও রক্ষণাবেক্ষণ লাগত—যা দেখায় অবকাঠামো কীভাবে বিশাল সাম্রাজ্যকে একত্রে রাখতে সাহায্য করেছিল।",
         ]
       },
       {
-        title: "8. Life in Roman Cities",
-        sub: "Homes, baths, and public spaces",
+        title: "৮. রোমান শহরের জীবন",
+        sub: "বাড়ি, স্নানাগার ও জনপরিসর",
         img: "https://picturetolink.com/i/RISUTo4XVz.jpg",
-        heading: "Everyday Roman Life",
+        heading: "রোমানদের দৈনন্দিন জীবন",
         body: [
-          "Roman cities contained markets, workshops, temples, baths, theaters, and public squares. Some wealthy residents lived in spacious houses, while many city dwellers lived in crowded apartment buildings. Conditions differed greatly between rich and poor.",
-          "Public baths served as places for washing, exercise, conversation, and social life. Food sellers, craftsmen, shopkeepers, and traders helped cities function. Archaeological discoveries from homes and streets reveal both the achievements and the inequalities of Roman society."
+          "রোমান শহরে বাজার, কর্মশালা, মন্দির, স্নানাগার, থিয়েটার ও জনচত্বর ছিল। ধনী বাসিন্দাদের কেউ প্রশস্ত বাড়িতে থাকতেন, আবার বহু নগরবাসী ভিড়ভাট্টার অ্যাপার্টমেন্টে বসবাস করতেন। ধনী ও দরিদ্রের জীবনযাত্রায় বড় পার্থক্য ছিল।",
+          "স্নানাগার ছিল গোসল, ব্যায়াম, আলাপ এবং সামাজিক মেলামেশার জায়গা। খাবার বিক্রেতা, কারিগর, দোকানি ও ব্যবসায়ীরা শহর সচল রাখতেন। বাড়ি ও রাস্তা থেকে পাওয়া প্রত্নতাত্ত্বিক নিদর্শন রোমান সমাজের অর্জন ও বৈষম্য—দুটিই প্রকাশ করে।",
         ]
       },
       {
-        title: "9. The Colosseum and Entertainment",
-        sub: "A famous symbol of Rome",
+        title: "৯. কলোসিয়াম ও বিনোদন",
+        sub: "রোমের বিখ্যাত প্রতীক",
         img: "https://picturetolink.com/i/8PRt7V4VRm.jpg",
-        heading: "Spectacles in the Roman World",
+        heading: "রোমান জগতের প্রদর্শনী",
         body: [
-          "The Colosseum in Rome opened in 80 CE under Emperor Titus. This enormous amphitheater hosted public spectacles, including gladiatorial contests and animal displays. It demonstrated the engineering skill and political ambitions of Roman rulers.",
-          "Public entertainment could bring large crowds together and reinforce the image of imperial power. The events could also be violent, and gladiators were often enslaved or otherwise held under harsh conditions. The Colosseum remains a major archaeological monument and a reminder of the complexity of Roman culture."
+          "রোমের কলোসিয়াম ৮০ খ্রিষ্টাব্দে সম্রাট টাইটাসের শাসনামলে উদ্বোধন করা হয়। বিশাল এই অ্যাম্ফিথিয়েটারে গ্ল্যাডিয়েটরদের লড়াই ও পশু প্রদর্শনীসহ জনসমক্ষে নানা খেলা হতো। এটি রোমানদের প্রকৌশল দক্ষতা এবং শাসকদের রাজনৈতিক উচ্চাকাঙ্ক্ষার পরিচয় দেয়।",
+          "জনবিনোদন বিপুল জনতাকে একত্র করত এবং সম্রাটের ক্ষমতার ভাবমূর্তি জোরদার করতে পারত। এসব প্রদর্শনী কখনও সহিংস ছিল; গ্ল্যাডিয়েটরদের অনেকেই দাসত্বে আবদ্ধ বা কঠোর নিয়ন্ত্রণে থাকতেন। কলোসিয়াম আজও গুরুত্বপূর্ণ প্রত্নতাত্ত্বিক নিদর্শন এবং রোমান সংস্কৃতির জটিলতার স্মারক।",
         ]
       },
       {
-        title: "10. The Transformation of Rome",
-        sub: "Why the Western Empire ended",
+        title: "১০. রোমের রূপান্তর",
+        sub: "পশ্চিম সাম্রাজ্যের অবসান কেন",
         img: "https://picturetolink.com/i/BrlexqvVpB.jpg",
-        heading: "Rome's Long Legacy",
+        heading: "রোমের দীর্ঘস্থায়ী উত্তরাধিকার",
         body: [
-          "The western Roman Empire faced political instability, economic pressures, military challenges, and changing relationships with neighboring peoples. In 476 CE, the last emperor commonly recognized as ruling the Western Roman Empire was deposed.",
-          "The eastern Roman Empire continued for nearly another thousand years, with Constantinople as its capital, until 1453. Roman law, languages, architecture, engineering, and political ideas influenced many later societies. Rome's story was not a single sudden ending, but a long transformation across regions and centuries."
-        ]
-      }
-    ]
-  },
-
-  {
-    id: "alexander",
-    title: "Alexander the Great",
-    cat: "Famous People",
-    desc: "Follow the extraordinary journey of the Macedonian king whose campaigns created a vast empire and spread Greek culture.",
-    img: I.king,
-    chapters: [
-      {
-        title: "1. The Prince of Macedonia",
-        sub: "A future conqueror is born",
-        img: I.king,
-        heading: "The Early Life of Alexander",
-        body: [
-          "Alexander was born in 356 BCE in Pella, the capital of ancient Macedonia. His father was King Philip II, who strengthened the Macedonian army and expanded the kingdom's influence. His mother was Olympias, a member of the royal family of Epirus.",
-          "Alexander grew up in a royal environment where military affairs, politics, and Greek culture mattered greatly. His childhood took place during a period when Macedonia was becoming one of the strongest powers in the Greek world."
-        ]
-      },
-      {
-        title: "2. Aristotle's Student",
-        sub: "Learning beyond the battlefield",
-        img: I.scholar,
-        heading: "The Education of a King",
-        body: [
-          "As a young man, Alexander received instruction from Aristotle, one of the most influential philosophers of ancient Greece. His education included subjects associated with philosophy, literature, politics, and the natural world.",
-          "Ancient sources connect Alexander with a strong admiration for Greek literature, especially the epic stories attributed to Homer. Education alone did not make him a successful commander, but it formed part of the cultural world that shaped his ambitions and the way he presented himself."
-        ]
-      },
-      {
-        title: "3. Becoming King",
-        sub: "A kingdom in uncertain times",
-        img: I.king,
-        heading: "Alexander Takes the Throne",
-        body: [
-          "In 336 BCE, King Philip II was assassinated. Alexander became king of Macedonia at about twenty years of age. His position was not automatically secure, and he had to establish authority among powerful nobles, soldiers, and neighboring communities.",
-          "Alexander moved quickly to strengthen his rule and maintain Macedonia's influence over Greek states. He then prepared to continue his father's planned campaign against the Persian Empire, one of the most powerful states of the ancient world."
-        ]
-      },
-      {
-        title: "4. Crossing into Asia",
-        sub: "The beginning of a great campaign",
-        img: I.caravan,
-        heading: "Alexander Enters the Persian World",
-        body: [
-          "In 334 BCE, Alexander led his army across the Hellespont into Asia Minor. His campaign challenged the Achaemenid Persian Empire, which controlled extensive territories and had considerable resources.",
-          "At the Battle of the Granicus, Alexander won an early victory against Persian forces. The result helped him secure parts of Asia Minor and gave momentum to his invasion. His army included cavalry, infantry, and experienced commanders who played essential roles in the campaign."
-        ]
-      },
-      {
-        title: "5. The Battle of Issus",
-        sub: "A major clash with Persia",
-        img: I.king,
-        heading: "Alexander Faces King Darius III",
-        body: [
-          "In 333 BCE, Alexander fought Persian king Darius III near Issus. The battle was a major turning point in the invasion. Alexander's forces defeated the Persian army, and Darius withdrew from the battlefield.",
-          "The victory strengthened Alexander's position and gave him access to important territories. Darius remained a serious opponent, however, and the Persian Empire was far from defeated. Alexander continued to campaign rather than treating one victory as the end of the war."
-        ]
-      },
-      {
-        title: "6. Egypt and Alexandria",
-        sub: "A city that would shape history",
-        img: I.market,
-        heading: "Alexander in Egypt",
-        body: [
-          "Alexander entered Egypt in 332 BCE, where Persian rule had become unpopular among some groups. He was welcomed by important local authorities and recognized in Egyptian religious traditions as a legitimate ruler.",
-          "In 331 BCE, he founded Alexandria on the Mediterranean coast. The city later became a major center of trade, scholarship, and cultural exchange. Its famous library and scholarly institutions developed after Alexander's lifetime, especially under the Ptolemaic rulers who followed him."
-        ]
-      },
-      {
-        title: "7. The Battle of Gaugamela",
-        sub: "The struggle for the Persian Empire",
-        img: I.king,
-        heading: "The Decisive Battle",
-        body: [
-          "In 331 BCE, Alexander and Darius III met at Gaugamela, in what is now northern Iraq. The Persian army was large and included cavalry and chariots, while Alexander relied on disciplined troops and carefully coordinated movements.",
-          "Alexander won a decisive victory, leaving Darius unable to maintain control over the empire's central territories. Alexander subsequently entered major Persian cities, including Babylon, Susa, and Persepolis. The conquest was a major achievement, but governing such a vast region presented new difficulties."
-        ]
-      },
-      {
-        title: "8. Eastward Across Central Asia",
-        sub: "Campaigns beyond Persia",
-        img: I.caravan,
-        heading: "A Difficult Journey East",
-        body: [
-          "Alexander continued his campaigns through regions of Central Asia, including Bactria and Sogdiana. These territories presented different challenges from the large set-piece battles he had fought earlier. Local resistance, difficult landscapes, and long supply lines made the campaigns demanding.",
-          "Alexander also founded settlements and established new political arrangements. His forces included people from many backgrounds as the empire expanded. These campaigns show that conquest was not simply a sequence of battles; it also required negotiations, garrisons, logistics, and efforts to maintain control."
-        ]
-      },
-      {
-        title: "9. Reaching India",
-        sub: "The Battle of the Hydaspes",
-        img: I.caravan,
-        heading: "Alexander at the Edge of His Campaign",
-        body: [
-          "In 326 BCE, Alexander crossed the Hydaspes River, now known as the Jhelum, and fought King Porus in the region of the Indian subcontinent. The battle was difficult, especially because of the river conditions and the presence of war elephants in Porus's army.",
-          "Alexander won, but he reportedly treated Porus with respect and allowed him to continue ruling as a subordinate ally. When Alexander's soldiers later refused to advance farther east, Alexander agreed to turn back. The decision reflected the exhaustion of an army that had been campaigning for years."
-        ]
-      },
-      {
-        title: "10. The Death and Legacy",
-        sub: "An empire after Alexander",
-        img: I.king,
-        heading: "The End of Alexander's Journey",
-        body: [
-          "Alexander returned west and reached Babylon, where he died in 323 BCE at the age of thirty-two. Ancient sources describe his final illness, but the precise cause of his death remains uncertain. He left no settled arrangement that successfully kept his empire united.",
-          "After his death, his commanders fought over the territories, creating several Hellenistic kingdoms. Greek language, art, and institutions spread and interacted with local traditions across parts of Asia and Egypt. Alexander's empire did not last as one state, but the cultural exchanges associated with his campaigns shaped the ancient world for generations."
+          "পশ্চিম রোমান সাম্রাজ্য রাজনৈতিক অস্থিরতা, অর্থনৈতিক চাপ, সামরিক সমস্যা এবং প্রতিবেশী জনগোষ্ঠীর সঙ্গে বদলে যাওয়া সম্পর্কের মুখোমুখি হয়। ৪৭৬ খ্রিষ্টাব্দে পশ্চিম রোমান সাম্রাজ্যের শেষ সম্রাট হিসেবে সাধারণত পরিচিত শাসককে ক্ষমতাচ্যুত করা হয়।",
+          "পূর্ব রোমান সাম্রাজ্য কনস্টান্টিনোপলকে রাজধানী করে আরও প্রায় এক হাজার বছর টিকে ছিল, ১৪৫৩ সাল পর্যন্ত। রোমান আইন, ভাষা, স্থাপত্য, প্রকৌশল ও রাজনৈতিক ধারণা পরবর্তী বহু সমাজকে প্রভাবিত করেছে। রোমের পতন এক মুহূর্তের ঘটনা নয়; এটি বহু অঞ্চল ও শতাব্দীজুড়ে চলা দীর্ঘ পরিবর্তন।",
         ]
       }
     ]
   },
   {
     id: "sinbad",
-    title: "Sinbad the Sailor",
-    cat: "Trade & Exploration",
-    desc: "Join Sinbad on his first sea voyage, from a terrifying shipwreck to an unexpected journey home.",
+    title: "নাবিক সিনবাদ",
+    cat: "বাণিজ্য ও অভিযান",
+    desc: "ভয়াবহ জাহাজডুবি থেকে অপ্রত্যাশিতভাবে ঘরে ফেরার পথে সিনবাদের প্রথম সমুদ্রযাত্রায় সঙ্গী হোন।",
     img: I.caravan,
     chapters: [
       {
-        title: "1. A New Beginning",
-        sub: "Setting sail from Baghdad",
+        title: "১. নতুন সূচনা",
+        sub: "বাগদাদ থেকে সমুদ্রযাত্রা",
         img:"https://picturetolink.com/i/S06ODZOReq.jpg",
-        heading: "A Merchant's Dream",
+        heading: "এক বণিকের স্বপ্ন",
         body: [
-          "Sinbad was a merchant from Baghdad who wanted to rebuild his fortune. He bought goods for trade and boarded a ship with other merchants.",
-          "As the ship sailed into the open sea, Sinbad dreamed of discovering distant lands. He had no idea how dangerous his first voyage would become."
+          "সিনবাদ ছিলেন বাগদাদের এক বণিক, যিনি আবার নিজের সম্পদ গড়ে তুলতে চেয়েছিলেন। তিনি ব্যবসার জন্য পণ্য কিনে অন্য বণিকদের সঙ্গে একটি জাহাজে উঠলেন।",
+          "জাহাজটি খোলা সমুদ্রে এগিয়ে যাওয়ার সময় সিনবাদ দূরদেশ আবিষ্কারের স্বপ্ন দেখছিলেন। তাঁর প্রথম সমুদ্রযাত্রা কতটা বিপজ্জনক হয়ে উঠবে, তা তিনি কল্পনাও করেননি।",
         ]
       },
       {
-        title: "2. The Living Island",
-        sub: "A strange discovery",
+        title: "২. জীবন্ত দ্বীপ",
+        sub: "অদ্ভুত আবিষ্কার",
         img:"https://picturetolink.com/i/SKX6stiYUt.jpg",
-        heading: "An Island That Moved",
+        heading: "যে দ্বীপ নড়ে উঠল",
         body: [
-          "After many days at sea, the sailors spotted what looked like a green island. They went ashore and began preparing food.",
-          "Suddenly, the ground shook. The captain shouted that it was actually a giant sea creature resting on the water. It began to move, and the sailors rushed toward the ship."
+          "সমুদ্রে বহু দিন চলার পর নাবিকেরা সবুজে ঢাকা একটি দ্বীপের মতো কিছু দেখতে পেলেন। তাঁরা তীরে নেমে খাবার তৈরির প্রস্তুতি নিলেন।",
+          "হঠাৎ মাটি কেঁপে উঠল। অধিনায়ক চিৎকার করে জানালেন, সেটি আসলে পানির ওপর বিশ্রাম নেওয়া এক বিশাল সামুদ্রিক প্রাণী। প্রাণীটি নড়তে শুরু করল, আর নাবিকেরা দ্রুত জাহাজের দিকে ছুটলেন।",
         ]
       },
       {
-        title: "3. Lost at Sea",
-        sub: "Alone in the waves",
+        title: "৩. সমুদ্রে হারিয়ে যাওয়া",
+        sub: "ঢেউয়ের মাঝে একা",
         img:"https://picturetolink.com/i/hiuGrRsxD1.jpg",
-        heading: "A Fight to Survive",
+        heading: "বেঁচে থাকার লড়াই",
         body: [
-          "Sinbad fell into the ocean as the giant creature disappeared beneath the waves. The ship sailed away without him.",
-          "He grabbed a piece of floating wood and held on tightly. Surrounded by the endless sea, he struggled to stay alive."
+          "বিশাল প্রাণীটি ঢেউয়ের নিচে অদৃশ্য হয়ে গেলে সিনবাদ সমুদ্রে পড়ে গেলেন। জাহাজটি তাঁকে ছাড়াই দূরে চলে গেল।",
+          "তিনি ভাসমান কাঠের একটি টুকরো আঁকড়ে ধরে রইলেন। চারদিকে অন্তহীন সমুদ্র; বেঁচে থাকার জন্য তাঁকে প্রাণপণ চেষ্টা করতে হলো।",
         ]
       },
       {
-        title: "4. A Strange Shore",
-        sub: "Finding land again",
+        title: "৪. অচেনা তীর",
+        sub: "আবার স্থলভাগের সন্ধান",
         img: "https://picturetolink.com/i/YBhLxZgGOY.jpg",
-        heading: "The Island Ahead",
+        heading: "সামনের দ্বীপ",
         body: [
-          "After drifting for a long time, Sinbad reached the shore of an unfamiliar island. Exhausted, he rested on the sand.",
-          "When he regained his strength, he began exploring. He needed fresh water, food, and a way to escape the island."
+          "দীর্ঘ সময় ভেসে থাকার পর সিনবাদ এক অচেনা দ্বীপের তীরে পৌঁছালেন। ক্লান্ত হয়ে তিনি বালুর ওপর বিশ্রাম নিলেন।",
+          "শক্তি ফিরে পেলে তিনি দ্বীপটি ঘুরে দেখতে শুরু করলেন। তাঁর দরকার ছিল বিশুদ্ধ পানি, খাবার এবং দ্বীপ থেকে বেরিয়ে যাওয়ার উপায়।",
         ]
       },
       {
-        title: "5. The King's Horses",
-        sub: "A surprising encounter",
+        title: "৫. রাজার ঘোড়া",
+        sub: "বিস্ময়কর সাক্ষাৎ",
         img: "https://picturetolink.com/i/uls6K0QKGe.jpg",
-        heading: "People on the Island",
+        heading: "দ্বীপের মানুষ",
         body: [
-          "While exploring, Sinbad discovered horses belonging to the island's king. The animals were being cared for by the king's servants.",
-          "One of the men noticed Sinbad and listened to his story. Realizing that he was a stranded traveler, the man offered to take him to the royal court."
+          "দ্বীপে ঘুরতে গিয়ে সিনবাদ রাজাের ঘোড়াগুলো দেখতে পেলেন। রাজার সেবকেরা প্রাণীগুলোর যত্ন নিচ্ছিলেন।",
+          "একজন লোক সিনবাদকে দেখে তাঁর কাহিনি শুনলেন। তিনি বুঝলেন, সিনবাদ আটকে পড়া এক ভ্রমণকারী; তাই তাঁকে রাজদরবারে নিয়ে যাওয়ার প্রস্তাব দিলেন।",
         ]
       },
       {
-        title: "6. Before the King",
-        sub: "A chance to begin again",
+        title: "৬. রাজার সামনে",
+        sub: "নতুন করে শুরুর সুযোগ",
         img: "https://picturetolink.com/i/Gx2vzYnhjF.jpg",
-        heading: "The King's Welcome",
+        heading: "রাজার অভ্যর্থনা",
         body: [
-          "Sinbad was brought before King Mihrjan. He explained how his ship had left him behind and how he had struggled to reach the island.",
-          "The king listened and welcomed him. Sinbad stayed in the kingdom and learned about the people and their way of life."
+          "সিনবাদকে মিহরজান রাজার সামনে হাজির করা হলো। তিনি ব্যাখ্যা করলেন, কীভাবে জাহাজ তাঁকে ফেলে চলে গিয়েছিল এবং কীভাবে তিনি কষ্ট করে দ্বীপে পৌঁছেছিলেন।",
+          "রাজা তাঁর কথা শুনে তাঁকে স্বাগত জানালেন। সিনবাদ রাজ্যে থেকে সেখানকার মানুষ ও তাদের জীবনযাপন সম্পর্কে জানতে লাগলেন।",
         ]
       },
       {
-        title: "7. A Ship from Home",
-        sub: "An unexpected reunion",
+        title: "৭. স্বদেশ থেকে আসা জাহাজ",
+        sub: "অপ্রত্যাশিত পুনর্মিলন",
         img: "https://picturetolink.com/i/M6OTX5Gyjn.jpg",
-        heading: "The Ship Returns",
+        heading: "জাহাজটি ফিরে আসে",
         body: [
-          "One day, a merchant ship arrived at the island. Sinbad recognized it as the very ship that had carried him away from Baghdad.",
-          "He approached the captain and explained who he was. The captain was surprised to discover that Sinbad had survived the terrible accident."
+          "একদিন দ্বীপে একটি বণিকজাহাজ এল। সিনবাদ চিনতে পারলেন—এটাই সেই জাহাজ, যেটি তাঁকে বাগদাদ থেকে নিয়ে এসেছিল।",
+          "তিনি অধিনায়কের কাছে গিয়ে নিজের পরিচয় দিলেন। ভয়ংকর দুর্ঘটনার পরও সিনবাদ বেঁচে আছেন জেনে অধিনায়ক বিস্মিত হলেন।",
         ]
       },
       {
-        title: "8. His Lost Goods",
-        sub: "A fortune recovered",
+        title: "৮. হারানো পণ্য",
+        sub: "ফিরে পাওয়া সম্পদ",
         img: "https://picturetolink.com/i/oV76sCnm6H.jpg",
-        heading: "The Merchant's Treasure",
+        heading: "বণিকের সম্পদ",
         body: [
-          "Sinbad discovered that his trading goods had been kept aboard the ship. The captain returned them to him after recognizing their rightful owner.",
-          "Sinbad was grateful. He had lost nearly everything at sea, but now he had another chance to rebuild his fortune."
+          "সিনবাদ জানতে পারলেন, তাঁর ব্যবসার পণ্যগুলো জাহাজেই রাখা হয়েছিল। প্রকৃত মালিককে চিনতে পেরে অধিনায়ক সেগুলো তাঁকে ফিরিয়ে দিলেন।",
+          "সিনবাদ কৃতজ্ঞ হলেন। সমুদ্রে তিনি প্রায় সবকিছু হারিয়েছিলেন, কিন্তু এবার তাঁর সম্পদ আবার গড়ে তোলার সুযোগ এল।",
         ]
       },
       {
-        title: "9. The Journey Home",
-        sub: "Leaving the island behind",
+        title: "৯. স্বদেশে ফেরার যাত্রা",
+        sub: "দ্বীপ পেছনে ফেলে",
         img:"https://picturetolink.com/i/LXpkPljFNj.jpg",
-        heading: "Back Across the Sea",
+        heading: "সমুদ্র পেরিয়ে ফিরে",
         body: [
-          "With his goods recovered, Sinbad continued his journey aboard the merchant ship. The voyage took him through distant ports and trading towns.",
-          "At last, he reached Baghdad. He had survived a frightening adventure and returned with valuable experience and renewed hope."
+          "পণ্য ফিরে পাওয়ার পর সিনবাদ বণিকজাহাজে নিজের যাত্রা চালিয়ে গেলেন। পথে জাহাজটি দূরবর্তী বন্দর ও বাণিজ্যনগরী অতিক্রম করল।",
+          "অবশেষে তিনি বাগদাদে ফিরে এলেন। ভয়ংকর এক অভিযানে বেঁচে ফিরে তিনি মূল্যবান অভিজ্ঞতা ও নতুন আশাও সঙ্গে আনলেন।",
         ]
       },
       {
-        title: "10. The First Voyage Ends",
-        sub: "A lesson in courage",
+        title: "১০. প্রথম যাত্রার সমাপ্তি",
+        sub: "সাহসের শিক্ষা",
         img: "https://picturetolink.com/i/N4Wo8kc0ow.jpg",
-        heading: "A New Chapter in Life",
+        heading: "জীবনের নতুন অধ্যায়",
         body: [
-          "Sinbad returned home with his fortune restored. His first voyage had taught him that the sea could bring both terrible danger and unexpected opportunities.",
-          "Although he was happy to be home, his love of adventure remained. One day, he would set sail again to discover what lay beyond the horizon."
+          "সিনবাদ নিজের সম্পদ ফিরে পেয়ে বাড়ি ফিরলেন। প্রথম সমুদ্রযাত্রা তাঁকে শিখিয়েছিল, সমুদ্র ভয়ংকর বিপদ যেমন আনতে পারে, তেমনি অপ্রত্যাশিত সুযোগও এনে দিতে পারে।",
+          "বাড়ি ফিরে তিনি খুশি ছিলেন, তবু তাঁর অভিযানের আকাঙ্ক্ষা রয়ে গেল। একদিন তিনি আবার পাল তুলবেন—দিগন্তের ওপারে কী আছে তা আবিষ্কার করতে।",
         ]
       }
     ]
@@ -1569,20 +1459,20 @@ stories.forEach(s=>{
   s.chapters.forEach(c=>{
     const w=c.body.join(" ").split(/\s+/).length;
     const m=Math.max(1,Math.round(w/200));
-    c.time=m+" min read";
+    c.time=m+" মিনিটে পড়া যাবে";
     total+=m;
   });
 
-  s.time=total+" min read";
+  s.time=total+" মিনিটে পড়া যাবে";
 });
 
 const cats=[
-  ["Ancient Civilizations","The Golden Age of Baghdad",I.baghdad],
-  ["Kings & Empires","Great rulers, dynasties and kingdoms",I.rome],
-  ["Famous People","Leaders, thinkers and explorers",I.king],
-  ["Wars & Discoveries","Battles, innovations and turning points",I.caravan],
-  ["Culture & Daily Life","Food, clothing, art, religion and people",I.market],
-  ["Trade & Exploration","Journeys and global connections",I.caravan]
+  ["প্রাচীন সভ্যতা","বাগদাদের স্বর্ণযুগ",I.baghdad],
+  ["রাজা ও সাম্রাজ্য","মহান শাসক, রাজবংশ ও রাজ্য",I.rome],
+  ["বিখ্যাত ব্যক্তিত্ব","নেতা, চিন্তাবিদ ও অভিযাত্রীরা",I.king],
+  ["যুদ্ধ ও আবিষ্কার","যুদ্ধ, উদ্ভাবন ও ইতিহাসের মোড়",I.war],
+  ["সংস্কৃতি ও দৈনন্দিন জীবন","খাবার, পোশাক, শিল্প, ধর্ম ও মানুষ",I.market],
+  ["বাণিজ্য ও অভিযান","ভ্রমণ ও বৈশ্বিক যোগাযোগ",I.caravan]
 ];
 
 /* SVG icons */
@@ -1642,7 +1532,7 @@ function go(id,nopush){
   });
 
   if(id==="bookmarks"){
-    renderSaved();
+    renderসংরক্ষিত();
   }
 
   window.scrollTo({top:0,behavior:"auto"});
@@ -1677,7 +1567,7 @@ function row(s){
   </button>`;
 }
 
-function renderHome(){
+function renderহোম(){
   document.getElementById("featured-list").innerHTML=
     stories.filter(s=>s.id!=="baghdad").map(row).join("");
 }
@@ -1703,7 +1593,7 @@ function openCategory(name){
   }
 
   if(!list.length){
-    toast("Stories in this category are coming soon.");
+    toast("এই বিভাগে গল্প শিগগিরই যোগ করা হবে।");
     return;
   }
 
@@ -1724,7 +1614,7 @@ function openStory(id){
   document.getElementById("story-desc").textContent=s.desc;
 
   document.getElementById("chapter-count").textContent=
-    s.chapters.length+" part"+(s.chapters.length===1?"":"s");
+    s.chapters.length+"টি অধ্যায়"+"";
 
   document.getElementById("chapters").innerHTML=s.chapters.map((c,i)=>`
     <button class="chapter-row" onclick="openChapter(${i})">
@@ -1764,7 +1654,7 @@ function renderReader(){
       <article class="reader-chapter" id="chapter-${i}">
         <h2>${c.title}</h2>
         <img class="reader-image" src="${c.img}" alt="">
-        <p class="caption">Illustrative image</p>
+        <p class="caption">দৃষ্টান্তমূলক ছবি</p>
         <h3 class="reader-title">${c.heading}</h3>
         <div class="reader-text">
           ${c.body.map(p=>`<p>${p}</p>`).join("")}
@@ -1784,7 +1674,7 @@ function updateReaderUI(){
 
     if(b){
       const sv=list.includes(sid+":"+i);
-      b.innerHTML=ic("bookmark",sv,18)+(sv?"Saved":"Save Bookmark");
+      b.innerHTML=ic("bookmark",sv,18)+(sv?"সংরক্ষিত":"বুকমার্ক সংরক্ষণ করুন");
     }
   });
 
@@ -1801,10 +1691,10 @@ function toggleChapterBookmark(i){
 
   if(list.includes(key)){
     list=list.filter(x=>x!==key);
-    toast("Bookmark removed");
+    toast("বুকমার্ক সরানো হয়েছে");
   }else{
     list.push(key);
-    toast("Saved to Bookmarks");
+    toast("সংরক্ষিত অধ্যায়ে যোগ করা হয়েছে");
   }
 
   try{
@@ -1822,7 +1712,7 @@ function bookmarks(){
   }
 }
 
-/* Update reader title when a different chapter is visible */
+/* অন্য অধ্যায় দেখা গেলে পাঠের শিরোনাম হালনাগাদ */
 window.addEventListener("scroll",()=>{
   if(cur!=="reader")return;
 
@@ -1840,7 +1730,7 @@ window.addEventListener("scroll",()=>{
   }
 },{passive:true});
 
-function renderSaved(){
+function renderসংরক্ষিত(){
   const list=bookmarks();
   const el=document.getElementById("saved-list");
 
@@ -1862,10 +1752,10 @@ function renderSaved(){
     </button>`;
   }).join("");
 
-  el.innerHTML=html||'<div class="empty"><b>No bookmarks yet</b>Open a chapter and tap the bookmark icon to save it here.</div>';
+  el.innerHTML=html||'<div class="empty"><b>এখনও কিছু সংরক্ষণ করা হয়নি</b>কোনো অধ্যায় খুলে বুকমার্ক আইকনে চাপ দিলে সেটি এখানে সংরক্ষিত হবে।</div>';
 }
 
-function toggleSearch(force){
+function toggleখুঁজুন(force){
   if(cur!=="home"){
     tab("home");
   }
@@ -1879,11 +1769,11 @@ function toggleSearch(force){
     document.getElementById("search-input").focus();
   }else{
     document.getElementById("search-input").value="";
-    renderHome();
+    renderহোম();
   }
 }
 
-function renderSearch(q){
+function renderখুঁজুন(q){
   const v=q.trim().toLowerCase();
 
   const a=stories.filter(s=>
@@ -1892,7 +1782,7 @@ function renderSearch(q){
 
   document.getElementById("featured-list").innerHTML=
     (v?a:stories.filter(s=>s.id!=="baghdad")).map(row).join("")
-    ||'<div class="empty">No stories found. Try another search.</div>';
+    ||'<div class="empty">কোনো গল্প পাওয়া যায়নি। অন্যভাবে খুঁজে দেখুন।</div>';
 }
 
 function toast(message){
@@ -1908,8 +1798,8 @@ function toast(message){
   },2100);
 }
 
-/* Initial rendering */
-renderHome();
+/* প্রাথমিক প্রদর্শন */
+renderহোম();
 renderCats();
 </script>
 </body>
