@@ -1,0 +1,1916 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>TimeTales — History Comes to Life</title>
+
+<style>
+:root{
+  --brown:#795638;
+  --brown-dark:#5c3d27;
+  --brown-pale:#f5ede5;
+  --ink:#191613;
+  --muted:#746d66;
+  --line:#eee5dc;
+  --paper:#fff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+  width:100%;
+  min-height:100vh;
+  background:#f3f0ec;
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:focus-visible,
+input:focus-visible{
+  outline:3px solid #cba77e;
+  outline-offset:2px;
+}
+
+img{
+  max-width:100%;
+}
+
+/* Main application */
+.app{
+  width:100%;
+  max-width:520px;
+  min-height:100vh;
+  min-height:100dvh;
+  margin:0 auto;
+  background:var(--paper);
+  position:relative;
+  box-shadow:0 0 28px #24180e0b;
+  padding-bottom:calc(78px + env(safe-area-inset-bottom));
+}
+
+.screen{
+  display:none;
+  width:100%;
+  min-width:0;
+  padding:18px 17px 28px;
+  min-height:100vh;
+  min-height:100dvh;
+}
+
+.screen.active{
+  display:block;
+}
+
+.welcome{
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#fff,#fbf5ee);
+}
+
+.welcome.active{
+  display:flex;
+  flex-direction:column;
+}
+
+.welcome-inner{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  min-height:100dvh;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:56px 28px 35px;
+}
+
+.logo{
+  color:var(--brown);
+  line-height:0;
+  margin-bottom:12px;
+}
+
+.brand{
+  font:700 39px Georgia,serif;
+  margin:0;
+  letter-spacing:-1px;
+}
+
+.tagline{
+  font:16px Georgia,serif;
+  color:var(--brown);
+  margin:8px 0 22px;
+}
+
+.intro{
+  max-width:280px;
+  color:#514941;
+  font-size:14px;
+  line-height:1.65;
+}
+
+.push{
+  flex:1;
+}
+
+.welcome-pic{
+  width:min(100%,300px);
+  aspect-ratio:306/256;
+  object-fit:cover;
+  border-radius:20px;
+  margin-top:26px;
+  box-shadow:0 10px 26px #5c3d2733;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  background:var(--brown);
+  color:#fff;
+  padding:13px 23px;
+  font-weight:700;
+  box-shadow:0 4px 12px #79563826;
+}
+
+.btn:active{
+  background:var(--brown-dark);
+}
+
+.welcome .btn{
+  width:min(100%,270px);
+  margin-top:20px;
+}
+
+/* Headers */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 17px;
+}
+
+.wordmark{
+  font:700 28px Georgia,serif;
+  letter-spacing:-.6px;
+}
+
+.icon-btn{
+  border:1px solid var(--line);
+  border-radius:50%;
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  color:var(--ink);
+  font-size:21px;
+  flex-shrink:0;
+}
+
+/* Featured story */
+.hero{
+  min-height:210px;
+  height:235px;
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  background:#d5c3b0;
+}
+
+.hero img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  inset:0;
+  object-fit:cover;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(20,13,8,.82),transparent 78%);
+  pointer-events:none;
+}
+
+.hero-copy{
+  position:absolute;
+  z-index:1;
+  bottom:15px;
+  left:16px;
+  right:15px;
+  color:#fff;
+}
+
+.eyebrow{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.3px;
+  color:#f0d4b3;
+  font-weight:700;
+}
+
+.hero h2{
+  font:700 25px Georgia,serif;
+  line-height:1.13;
+  margin:6px 0;
+}
+
+.hero p{
+  font-size:12px;
+  line-height:1.4;
+  margin:0 0 10px;
+}
+
+.hero .btn{
+  padding:9px 16px;
+  background:#fff;
+  color:var(--brown-dark);
+  box-shadow:none;
+}
+
+/* Section headings and stories */
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:21px 0 12px;
+}
+
+.section-head h2{
+  font:700 19px Georgia,serif;
+  margin:0;
+}
+
+.text-btn{
+  border:0;
+  background:none;
+  color:var(--brown);
+  font-weight:700;
+  padding:7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+
+.story-list{
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+  min-width:0;
+}
+
+.story-row{
+  width:100%;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border:0;
+  padding:0;
+  background:#fff;
+  text-align:left;
+  color:inherit;
+}
+
+.thumb{
+  width:89px;
+  height:75px;
+  object-fit:cover;
+  border-radius:10px;
+  background:var(--brown-pale);
+  flex-shrink:0;
+}
+
+.story-row h3{
+  font:700 14px Georgia,serif;
+  line-height:1.25;
+  margin:0 0 5px;
+  overflow-wrap:anywhere;
+}
+
+.story-row p{
+  font-size:11px;
+  line-height:1.4;
+  color:var(--muted);
+  margin:0 0 5px;
+}
+
+.meta{
+  font-size:10px;
+  color:var(--brown);
+  font-weight:700;
+}
+
+.arrow{
+  margin-left:auto;
+  color:var(--brown);
+  font-size:22px;
+  flex-shrink:0;
+}
+
+/* Bottom navigation */
+.bottom-nav{
+  position:fixed;
+  z-index:9;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  display:none;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  background:#fffffff2;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);
+  padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+}
+
+.nav-item{
+  min-width:0;
+  border:0;
+  background:none;
+  color:#77716b;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  gap:4px;
+  font-size:10px;
+  padding:2px;
+}
+
+.nav-item .ni{
+  display:grid;
+  place-items:center;
+  height:24px;
+}
+
+.nav-item.active{
+  color:var(--brown);
+  font-weight:700;
+}
+
+/* Categories */
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+}
+
+.category-card{
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:13px;
+  overflow:hidden;
+  background:#fff;
+  text-align:left;
+  padding:0;
+  color:var(--ink);
+}
+
+.category-card img{
+  width:100%;
+  height:112px;
+  object-fit:cover;
+  display:block;
+  background:var(--brown-pale);
+}
+
+.category-card .cat-copy{
+  padding:9px;
+}
+
+.category-card h3{
+  font:700 14px Georgia,serif;
+  line-height:1.2;
+  margin:0 0 5px;
+  overflow-wrap:anywhere;
+}
+
+.category-card p{
+  font-size:10px;
+  line-height:1.4;
+  color:var(--muted);
+  margin:0;
+}
+
+/* Story details */
+.backline{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.backline h1{
+  font:700 17px Georgia,serif;
+  line-height:1.3;
+  margin:0;
+  flex:1;
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.cover{
+  width:100%;
+  height:195px;
+  object-fit:cover;
+  border-radius:14px;
+  background:var(--brown-pale);
+}
+
+.description{
+  font-size:13px;
+  line-height:1.65;
+  color:#514a43;
+}
+
+.chapter-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+  text-align:left;
+  color:inherit;
+  width:100%;
+  min-width:0;
+}
+
+.chapter-row img{
+  width:68px;
+  height:58px;
+  border-radius:9px;
+  object-fit:cover;
+  background:var(--brown-pale);
+  flex-shrink:0;
+}
+
+.chapter-row strong{
+  font:700 13px Georgia,serif;
+  display:block;
+  margin-bottom:4px;
+  overflow-wrap:anywhere;
+}
+
+.chapter-row small{
+  font-size:10px;
+  line-height:1.4;
+  color:var(--muted);
+}
+
+/* Reader */
+.reader-toolbar{
+  position:sticky;
+  top:0;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:-18px -17px 10px;
+  padding:calc(12px + env(safe-area-inset-top)) 17px 12px;
+  background:#fffffff5;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+
+.reader-toolbar h1{
+  font:700 17px Georgia,serif;
+  line-height:1.3;
+  margin:0;
+  flex:1;
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.reader-chapter{
+  padding:15px 0 22px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--line);
+  scroll-margin-top:76px;
+}
+
+.reader-chapter:last-child{
+  min-height:75vh;
+}
+
+.reader-chapter h2{
+  font:700 20px Georgia,serif;
+  line-height:1.3;
+  margin:0 0 8px;
+}
+
+.reader-image{
+  width:100%;
+  max-height:320px;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
+  background:var(--brown-pale);
+  margin:10px 0 8px;
+}
+
+.caption{
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.4;
+  margin:0 0 14px;
+}
+
+.reader-title{
+  font:700 21px Georgia,serif;
+  margin:12px 0 8px;
+}
+
+.reader-text{
+  font:14px/1.7 Georgia,serif;
+  color:#292521;
+  overflow-wrap:anywhere;
+}
+
+.reader-text p{
+  margin:0 0 12px;
+}
+
+/* Search */
+.searchbar{
+  display:flex;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.searchbar input{
+  width:100%;
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+}
+
+.empty{
+  text-align:center;
+  padding:42px 18px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.empty b{
+  display:block;
+  font:700 19px Georgia,serif;
+  color:var(--ink);
+  margin-bottom:7px;
+}
+
+.note{
+  font-size:10px;
+  line-height:1.5;
+  color:var(--muted);
+  margin-top:16px;
+}
+
+.toast{
+  display:none;
+  position:fixed;
+  z-index:20;
+  bottom:calc(88px + env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  background:#28221d;
+  color:white;
+  border-radius:10px;
+  padding:10px 14px;
+  font-size:12px;
+  max-width:90%;
+  text-align:center;
+}
+
+/* Small phones */
+@media(max-width:359px){
+  .screen{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .brand{
+    font-size:34px;
+  }
+
+  .hero{
+    height:220px;
+  }
+
+  .hero h2{
+    font-size:22px;
+  }
+
+  .thumb{
+    width:75px;
+    height:68px;
+  }
+
+  .category-grid{
+    gap:9px;
+  }
+
+  .category-card img{
+    height:95px;
+  }
+
+  .reader-toolbar{
+    margin-left:-12px;
+    margin-right:-12px;
+    padding-left:12px;
+    padding-right:12px;
+  }
+}
+
+/* Tablets */
+@media(min-width:600px){
+  body{
+    padding:18px;
+  }
+
+  .app{
+    max-width:900px;
+    border-radius:20px;
+    overflow:hidden;
+    min-height:calc(100vh - 36px);
+    min-height:calc(100dvh - 36px);
+  }
+
+  .screen{
+    padding:26px 28px 36px;
+  }
+
+  .welcome{
+    padding:0;
+  }
+
+  .welcome-inner{
+    min-height:calc(100vh - 36px);
+    min-height:calc(100dvh - 36px);
+    padding:65px 35px 40px;
+  }
+
+  .brand{
+    font-size:44px;
+  }
+
+  .intro{
+    max-width:390px;
+    font-size:15px;
+  }
+
+  .welcome-pic{
+    width:min(100%,380px);
+  }
+
+  .header{
+    margin-bottom:22px;
+  }
+
+  .wordmark{
+    font-size:32px;
+  }
+
+  .hero{
+    height:310px;
+  }
+
+  .hero-copy{
+    left:25px;
+    right:25px;
+    bottom:22px;
+  }
+
+  .hero h2{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .eyebrow{
+    font-size:11px;
+  }
+
+  .section-head{
+    margin-top:27px;
+  }
+
+  .section-head h2{
+    font-size:22px;
+  }
+
+  .story-list{
+    gap:17px;
+  }
+
+  .story-row{
+    gap:15px;
+  }
+
+  .thumb{
+    width:115px;
+    height:90px;
+  }
+
+  .story-row h3{
+    font-size:16px;
+  }
+
+  .story-row p{
+    font-size:12px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:17px;
+  }
+
+  .category-card img{
+    height:150px;
+  }
+
+  .category-card .cat-copy{
+    padding:12px;
+  }
+
+  .category-card h3{
+    font-size:16px;
+  }
+
+  .category-card p{
+    font-size:12px;
+  }
+
+  .cover{
+    height:280px;
+  }
+
+  .description{
+    font-size:15px;
+  }
+
+  .chapter-row{
+    gap:14px;
+    padding:13px 0;
+  }
+
+  .chapter-row img{
+    width:90px;
+    height:72px;
+  }
+
+  .chapter-row strong{
+    font-size:15px;
+  }
+
+  .chapter-row small{
+    font-size:12px;
+  }
+
+  .reader-toolbar{
+    margin:-26px -28px 12px;
+    padding:calc(14px + env(safe-area-inset-top)) 28px 14px;
+  }
+
+  .reader-toolbar h1{
+    font-size:19px;
+  }
+
+  .reader-chapter h2{
+    font-size:25px;
+  }
+
+  .reader-title{
+    font-size:24px;
+  }
+
+  .reader-text{
+    font-size:16px;
+    line-height:1.85;
+  }
+
+  .reader-image{
+    max-height:390px;
+  }
+
+  .bottom-nav{
+    max-width:900px;
+    bottom:18px;
+    border-radius:0 0 20px 20px;
+  }
+
+  .nav-item{
+    font-size:12px;
+    gap:5px;
+  }
+
+  .toast{
+    bottom:100px;
+  }
+}
+
+/* Laptops and desktop screens */
+@media(min-width:1000px){
+  .app{
+    max-width:1100px;
+  }
+
+  .screen{
+    padding:32px 40px 42px;
+  }
+
+  .welcome{
+    padding:0;
+  }
+
+  .welcome-inner{
+    min-height:calc(100vh - 36px);
+    min-height:calc(100dvh - 36px);
+    padding:55px 50px 40px;
+  }
+
+  .welcome-pic{
+    width:min(100%,420px);
+  }
+
+  .header{
+    margin-bottom:25px;
+  }
+
+  .wordmark{
+    font-size:34px;
+  }
+
+  .hero{
+    height:360px;
+  }
+
+  .hero-copy{
+    left:32px;
+    right:32px;
+    bottom:27px;
+  }
+
+  .hero h2{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  /* Stories appear in two columns on wide screens */
+  .story-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:25px;
+    row-gap:20px;
+  }
+
+  .story-row{
+    align-items:center;
+  }
+
+  .thumb{
+    width:125px;
+    height:95px;
+  }
+
+  .story-row h3{
+    font-size:16px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+  }
+
+  .category-card img{
+    height:185px;
+  }
+
+  .category-card .cat-copy{
+    padding:14px;
+  }
+
+  .category-card h3{
+    font-size:17px;
+  }
+
+  .category-card p{
+    font-size:12px;
+  }
+
+  /* Keep long-form reading comfortable */
+  #reader{
+    padding-left:clamp(40px,12%,140px);
+    padding-right:clamp(40px,12%,140px);
+  }
+
+  .reader-toolbar{
+    margin:-32px calc(-1 * clamp(40px,12%,140px)) 15px;
+    padding:calc(16px + env(safe-area-inset-top)) clamp(40px,12%,140px) 16px;
+  }
+
+  .reader-chapter{
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .reader-chapter h2{
+    font-size:28px;
+  }
+
+  .reader-title{
+    font-size:26px;
+  }
+
+  .reader-text{
+    font-size:17px;
+    line-height:1.9;
+  }
+
+  .reader-image{
+    max-height:440px;
+  }
+
+  .bottom-nav{
+    max-width:1100px;
+  }
+}
+
+/* Extra-wide desktop monitors */
+@media(min-width:1400px){
+  .app{
+    max-width:1200px;
+  }
+
+  .bottom-nav{
+    max-width:1200px;
+  }
+
+  .hero{
+    height:400px;
+  }
+
+  .category-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<section id="welcome" class="screen welcome active">
+  <div class="welcome-inner">
+    <div class="logo" data-ic="book" data-size="52"></div>
+    <h1 class="brand">TimeTales</h1>
+    <p class="tagline">History Comes to Life</p>
+    <p class="intro">Explore the real stories of the past, with stunning images and easy-to-read stories.</p>
+    <img class="welcome-pic" src="https://picturetolink.com/i/0jvSDQyPz9.jpg?auto=format&fit=crop&w=900&q=85" alt="Historic architecture">
+    <div class="push"></div>
+    <button class="btn" onclick="tab('home')">Get Started&nbsp; →</button>
+  </div>
+</section>
+
+<section id="home" class="screen">
+  <header class="header">
+    <div class="wordmark">TimeTales</div>
+    <button class="icon-btn" onclick="toggleSearch()" aria-label="Search" data-ic="search"></button>
+  </header>
+
+  <div id="search-area" class="searchbar" style="display:none">
+    <input id="search-input" placeholder="Search history..." aria-label="Search stories" oninput="renderSearch(this.value)">
+    <button class="icon-btn" onclick="toggleSearch(false)" aria-label="Close search" data-ic="close"></button>
+  </div>
+
+  <div class="hero">
+    <img src="https://picturetolink.com/i/zvowffEVqm.jpg?auto=format&fit=crop&w=1000&q=85" alt="Historic architecture">
+    <div class="hero-copy">
+      <div class="eyebrow">Featured Story</div>
+      <h2>The Golden Age of Baghdad</h2>
+      <p>A city of knowledge, culture and innovation.</p>
+      <button class="btn" onclick="openStory('baghdad')">Read Now&nbsp; →</button>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Featured Stories</h2>
+    <button class="text-btn" onclick="tab('categories')">See All ›</button>
+  </div>
+  <div id="featured-list" class="story-list"></div>
+</section>
+
+<section id="categories" class="screen">
+  <header class="header">
+    <button class="icon-btn" onclick="tab('home')" aria-label="Back to home" data-ic="back"></button>
+    <div class="wordmark" style="font-size:24px">Categories</div>
+    <button class="icon-btn" onclick="toggleSearch(true)" aria-label="Search" data-ic="search"></button>
+  </header>
+  <div id="category-grid" class="category-grid"></div>
+</section>
+
+<section id="catlist" class="screen">
+  <div class="backline">
+    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <h1 id="catlist-title"></h1>
+  </div>
+  <div id="catlist-items" class="story-list"></div>
+</section>
+
+<section id="story" class="screen">
+  <div class="backline">
+    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <h1 id="story-title"></h1>
+  </div>
+  <img id="story-cover" class="cover" alt="">
+  <p id="story-desc" class="description"></p>
+  <div class="section-head">
+    <h2>Chapters</h2>
+    <span class="meta" id="chapter-count"></span>
+  </div>
+  <div id="chapters"></div>
+  <p class="note">Images are illustrative, not authentic photographs of the period.</p>
+</section>
+
+<section id="reader" class="screen">
+  <div class="reader-toolbar">
+    <button class="icon-btn" onclick="back()" aria-label="Back" data-ic="back"></button>
+    <h1 id="reader-top"></h1>
+    <button class="icon-btn" id="bookmark-button" onclick="toggleChapterBookmark(ci)" aria-label="Save bookmark"></button>
+  </div>
+  <div id="reader-chapters"></div>
+  <p class="note">Images are illustrative, not authentic photographs of the period.</p>
+</section>
+
+<section id="bookmarks" class="screen">
+  <header class="header">
+    <div class="wordmark" style="font-size:25px">Bookmarks</div>
+  </header>
+  <p class="description">Chapters you save will appear here on this device.</p>
+  <div id="saved-list" class="story-list"></div>
+</section>
+
+<nav id="nav" class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-item active" data-page="home" onclick="tab('home')">
+    <span class="ni" data-ic="home"></span>Home
+  </button>
+  <button class="nav-item" data-page="categories" onclick="tab('categories')">
+    <span class="ni" data-ic="grid"></span>Categories
+  </button>
+  <button class="nav-item" data-page="bookmarks" onclick="tab('bookmarks')">
+    <span class="ni" data-ic="bookmark"></span>Bookmarks
+  </button>
+</nav>
+
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+const I={
+  baghdad:"https://picturetolink.com/i/tgBxHJMuxt.jpg",
+  rome:"https://picturetolink.com/i/16lCPcTGwU.jpg",
+  scholar:"https://picturetolink.com/i/16lCPcTGwU.jpg",
+  market:"https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=900&q=85",
+  caravan:"https://picturetolink.com/i/eRdDMeOvWx.jpg",
+  king:"https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=800&q=85"
+};
+const stories = [
+  {
+    id: "baghdad",
+    title: "The Golden Age of Baghdad",
+    cat: "Ancient Civilizations",
+    desc: "Discover how Baghdad became one of the world's greatest centers of science, learning, trade, and culture.",
+    img: I.baghdad,
+    chapters: [
+      {
+        title: "1. The Birth of Baghdad",
+        sub: "A new capital rises",
+        img: "https://picturetolink.com/i/410pVRz16Z.jpg",
+        heading: "The Birth of a Great City",
+        body: [
+          "In 762 CE, the Abbasid caliph Al-Mansur founded a new capital near the Tigris River. He chose the location carefully because it was connected to important trade routes between Asia, Africa, and Europe. The new city would become one of the most influential places in the medieval world.",
+          "Baghdad was designed as a planned circular city, with important buildings near its center. Its location helped merchants, scholars, travelers, and officials reach the city from many directions. What began as a political capital soon developed into a center of wealth, culture, and knowledge."
+        ]
+      },
+      {
+        title: "2. The Circular City",
+        sub: "A remarkable urban design",
+        img: "https://picturetolink.com/i/slWx5casMn.jpg",
+        heading: "A City Designed in a Circle",
+        body: [
+          "Early Baghdad was famous for its circular design. Historical accounts describe defensive walls, gates, administrative buildings, and the caliph's palace near the center. The design reflected the importance of organization and security in the new Abbasid capital.",
+          "Although the original Round City changed greatly over time, its design remains an important part of Baghdad's history. The city expanded beyond its original walls, developing neighborhoods, markets, religious buildings, and busy streets along the Tigris River."
+        ]
+      },
+      {
+        title: "3. The Abbasid Caliphs",
+        sub: "Leaders of a powerful era",
+        img: "https://picturetolink.com/i/zx1RKlrMbg.jpg",
+        heading: "The Rulers Behind the Golden Age",
+        body: [
+          "The Abbasid dynasty came to power in 750 CE and moved its capital to Baghdad in 762 CE. Its rulers governed a vast empire connected by trade, scholarship, and diverse cultural traditions. Their decisions helped shape the city's political and intellectual life.",
+          "Some Abbasid caliphs supported scholars, translators, physicians, mathematicians, and poets. Their support was not identical from one ruler to another, but Baghdad benefited from generations of people who helped knowledge travel across languages and regions."
+        ]
+      },
+      {
+        title: "4. The House of Wisdom",
+        sub: "A famous center of learning",
+        img: "https://picturetolink.com/i/Ht1v0GJ1vP.jpg",
+        heading: "The Search for Knowledge",
+        body: [
+          "Baghdad became associated with a celebrated scholarly institution often called the House of Wisdom, or Bayt al-Hikma. During the Abbasid period, scholars worked with books and ideas from Greek, Persian, Indian, and other intellectual traditions.",
+          "Translators and researchers helped preserve and develop knowledge in subjects such as mathematics, astronomy, medicine, and philosophy. Scholarship was not limited to one building; libraries, private collections, teaching circles, and courts also contributed to Baghdad's intellectual life."
+        ]
+      },
+      {
+        title: "5. Scientists and Inventors",
+        sub: "Ideas that traveled across the world",
+        img: "https://picturetolink.com/i/tMhvvSfv6C.jpg",
+        heading: "The Minds That Changed History",
+        body: [
+          "Baghdad attracted brilliant thinkers. The mathematician Muhammad ibn Musa al-Khwarizmi made important contributions to algebra and calculation. The word algorithm is derived from a Latinized form of his name, while the word algebra comes from the title of one of his works.",
+          "Physicians, astronomers, mathematicians, and philosophers built on earlier discoveries and developed new approaches. Their work became part of a wider international exchange of knowledge, influencing later scholars in the Middle East, North Africa, and Europe."
+        ]
+      },
+      {
+        title: "6. The Markets of Baghdad",
+        sub: "A meeting place for merchants",
+        img:"https://picturetolink.com/i/nhO568XcCL.jpg",
+        heading: "The City of Busy Markets",
+        body: [
+          "Baghdad stood at the crossroads of major trading networks. Its markets offered goods that included textiles, spices, metalwork, paper, ceramics, and other products brought from distant regions. Merchants connected the city with ports, caravan routes, and neighboring cities.",
+          "Markets were more than places to buy and sell. They were also places where languages, customs, news, and ideas met. A traveler might hear stories from distant lands while a craftsperson sold goods made using skills passed down through generations."
+        ]
+      },
+      {
+        title: "7. Books, Paper, and Libraries",
+        sub: "Knowledge easier to share",
+        img: "https://picturetolink.com/i/ors87wqpj7.jpg",
+        heading: "The Power of the Written Word",
+        body: [
+          "Paper-making techniques spread westward from China through Central Asia and the Islamic world. Paper became increasingly important for writing, copying books, recording business transactions, and sharing scholarly ideas.",
+          "Baghdad's intellectual culture benefited from the availability of written works and the efforts of scribes, translators, teachers, and collectors. Books connected scholars across time, allowing them to study earlier arguments, compare observations, and add new discoveries."
+        ]
+      },
+      {
+        title: "8. Life Along the Tigris",
+        sub: "Everyday life in a great city",
+        img:"https://picturetolink.com/i/rbCnQqKNJd.jpg",
+        heading: "People and Daily Life",
+        body: [
+          "Life in medieval Baghdad varied greatly depending on a person's wealth, occupation, and social position. The city included officials, merchants, artisans, laborers, scholars, sailors, cooks, teachers, and families living in different kinds of neighborhoods.",
+          "The Tigris River helped support transport, trade, and daily needs. Streets and markets could be crowded, while homes, gardens, mosques, workshops, and learning spaces formed part of the city's wider urban life. Baghdad was a living community, not just a center of rulers and scholars."
+        ]
+      },
+      {
+        title: "9. Stories, Poetry, and Culture",
+        sub: "A city rich in imagination",
+        img: "https://picturetolink.com/i/1MFZggTGnJ.jpg",
+        heading: "The Cultural Life of Baghdad",
+        body: [
+          "Baghdad became famous for literature, poetry, music, storytelling, and intellectual debate. Writers drew inspiration from court life, ordinary people, travel, humor, history, and moral questions.",
+          "The collection known as One Thousand and One Nights is associated with a long tradition of storytelling that developed across different cultures and centuries. It should not be treated as a simple record of Abbasid Baghdad, but its tales help illustrate the lasting appeal of stories about merchants, rulers, travelers, and extraordinary adventures."
+        ]
+      },
+      {
+        title: "10. The Fall and the Legacy",
+        sub: "The end of an era, not the end of its influence",
+        img: "https://picturetolink.com/i/ltATRVQbb4.jpg",
+        heading: "Baghdad's Lasting Legacy",
+        body: [
+          "In 1258, Mongol forces captured Baghdad after a siege. The city suffered immense destruction, and the Abbasid caliphate's rule in Baghdad came to an end. The catastrophe marked a major turning point in the city's history.",
+          "Yet the knowledge developed, translated, collected, and shared across the Abbasid era did not simply disappear. Books, scientific methods, mathematical ideas, and literary traditions continued to influence later generations. Baghdad's history remains a powerful reminder that cities can shape world civilization through learning and exchange."
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "rome",
+    title: "The Rise and Fall of Rome",
+    cat: "Kings & Empires",
+    desc: "Explore the Roman world, from its legendary beginnings to its emperors, engineering achievements, and transformation.",
+    img: I.rome,
+    chapters: [
+      {
+        title: "1. The Legendary Beginning",
+        sub: "The story of Romulus and Remus",
+        img:"https://picturetolink.com/i/Wo1T8WtanR.jpg",
+        heading: "How Rome Began",
+        body: [
+          "According to Roman legend, Rome was founded by Romulus in 753 BCE. The story tells of twin brothers, Romulus and Remus, who were rescued and raised by a she-wolf. As adults, they became involved in a dispute that ended with Romulus becoming the city's legendary founder.",
+          "Archaeology shows that settlements existed on the hills around Rome long before the traditional founding date. Over time, these communities grew together into a city. The legend became an important part of Roman identity, while archaeological evidence helps historians understand how the city actually developed."
+        ]
+      },
+      {
+        title: "2. The Roman Kingdom",
+        sub: "Before the Republic",
+        img: "https://picturetolink.com/i/gHH7Ynkzdk.jpg",
+        heading: "Rome's Earliest Government",
+        body: [
+          "Roman tradition describes the earliest period of Rome as a kingdom ruled by a succession of kings. The historical details are difficult to verify because many surviving accounts were written long after the events they describe.",
+          "Around 509 BCE, according to traditional Roman chronology, the monarchy was overthrown and a republic was established. This transition introduced a new political system in which elected officials and institutions shared power, although political rights remained unequal."
+        ]
+      },
+      {
+        title: "3. The Roman Republic",
+        sub: "Power, citizenship, and politics",
+        img: "https://picturetolink.com/i/E2wBQrmDmS.jpg",
+        heading: "A New Way to Govern",
+        body: [
+          "The Roman Republic developed institutions such as the Senate, magistracies, and popular assemblies. Political life involved alliances, competition, public speaking, and debates over who should hold authority.",
+          "The Republic was not a modern democracy. Wealthy families held considerable influence, and women, enslaved people, and many residents did not enjoy the same political rights as male citizens. Even so, Roman republican institutions left a lasting mark on later political thought."
+        ]
+      },
+      {
+        title: "4. The Roman Army",
+        sub: "The force behind expansion",
+        img: "https://picturetolink.com/i/wWCOQbBusF.jpg",
+        heading: "How Rome Built an Empire",
+        body: [
+          "Roman military organization helped the Republic expand across the Italian peninsula and beyond. Soldiers served in disciplined units, built camps and roads, and supported campaigns that brought Rome into conflict with rival powers.",
+          "Military success also brought challenges. Conquered territories needed administration, and wealth from expansion changed Roman society. Generals gained influence, while disputes over land, citizenship, and political power contributed to serious internal tensions."
+        ]
+      },
+      {
+        title: "5. Julius Caesar",
+        sub: "A general changes Roman politics",
+        img: "https://picturetolink.com/i/VGXNA3zEjF.jpg",
+        heading: "The Rise of Julius Caesar",
+        body: [
+          "Julius Caesar became one of Rome's most influential generals and politicians. His campaigns in Gaul increased his fame and brought large territories under Roman control. His growing power, however, alarmed political rivals.",
+          "In 49 BCE, Caesar crossed the Rubicon River with his army, beginning a civil war. He eventually became Rome's dominant leader and introduced reforms, but his concentration of power created deep opposition among senators who feared the end of the Republic."
+        ]
+      },
+      {
+        title: "6. The First Emperor",
+        sub: "Augustus transforms Rome",
+        img:"https://picturetolink.com/i/QRa2vGd7jY.jpg",
+        heading: "From Republic to Empire",
+        body: [
+          "After years of civil war following Caesar's assassination in 44 BCE, Octavian defeated his rivals. In 27 BCE, he received the title Augustus and established a new political order that historians identify as the beginning of the Roman Empire.",
+          "Augustus presented himself as restoring stability and traditional institutions while retaining decisive authority. His reign began a long period in which emperors ruled Rome, though the empire continued to face political struggles, border conflicts, and changing economic conditions."
+        ]
+      },
+      {
+        title: "7. Roads and Engineering",
+        sub: "Building connections across the empire",
+        img: "https://picturetolink.com/i/d0BcnZK57U.jpg",
+        heading: "The Builders of Rome",
+        body: [
+          "Roman engineers built roads, bridges, harbors, aqueducts, and public buildings. Their roads helped armies travel and made it easier for officials, merchants, and travelers to move between cities.",
+          "Aqueducts carried water over long distances using carefully designed gradients and structures. Roman concrete and architectural techniques also supported large public works. These projects required planning, labor, materials, and maintenance, showing how infrastructure helped hold a vast empire together."
+        ]
+      },
+      {
+        title: "8. Life in Roman Cities",
+        sub: "Homes, baths, and public spaces",
+        img: "https://picturetolink.com/i/RISUTo4XVz.jpg",
+        heading: "Everyday Roman Life",
+        body: [
+          "Roman cities contained markets, workshops, temples, baths, theaters, and public squares. Some wealthy residents lived in spacious houses, while many city dwellers lived in crowded apartment buildings. Conditions differed greatly between rich and poor.",
+          "Public baths served as places for washing, exercise, conversation, and social life. Food sellers, craftsmen, shopkeepers, and traders helped cities function. Archaeological discoveries from homes and streets reveal both the achievements and the inequalities of Roman society."
+        ]
+      },
+      {
+        title: "9. The Colosseum and Entertainment",
+        sub: "A famous symbol of Rome",
+        img: "https://picturetolink.com/i/8PRt7V4VRm.jpg",
+        heading: "Spectacles in the Roman World",
+        body: [
+          "The Colosseum in Rome opened in 80 CE under Emperor Titus. This enormous amphitheater hosted public spectacles, including gladiatorial contests and animal displays. It demonstrated the engineering skill and political ambitions of Roman rulers.",
+          "Public entertainment could bring large crowds together and reinforce the image of imperial power. The events could also be violent, and gladiators were often enslaved or otherwise held under harsh conditions. The Colosseum remains a major archaeological monument and a reminder of the complexity of Roman culture."
+        ]
+      },
+      {
+        title: "10. The Transformation of Rome",
+        sub: "Why the Western Empire ended",
+        img: "https://picturetolink.com/i/BrlexqvVpB.jpg",
+        heading: "Rome's Long Legacy",
+        body: [
+          "The western Roman Empire faced political instability, economic pressures, military challenges, and changing relationships with neighboring peoples. In 476 CE, the last emperor commonly recognized as ruling the Western Roman Empire was deposed.",
+          "The eastern Roman Empire continued for nearly another thousand years, with Constantinople as its capital, until 1453. Roman law, languages, architecture, engineering, and political ideas influenced many later societies. Rome's story was not a single sudden ending, but a long transformation across regions and centuries."
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "alexander",
+    title: "Alexander the Great",
+    cat: "Famous People",
+    desc: "Follow the extraordinary journey of the Macedonian king whose campaigns created a vast empire and spread Greek culture.",
+    img: I.king,
+    chapters: [
+      {
+        title: "1. The Prince of Macedonia",
+        sub: "A future conqueror is born",
+        img: I.king,
+        heading: "The Early Life of Alexander",
+        body: [
+          "Alexander was born in 356 BCE in Pella, the capital of ancient Macedonia. His father was King Philip II, who strengthened the Macedonian army and expanded the kingdom's influence. His mother was Olympias, a member of the royal family of Epirus.",
+          "Alexander grew up in a royal environment where military affairs, politics, and Greek culture mattered greatly. His childhood took place during a period when Macedonia was becoming one of the strongest powers in the Greek world."
+        ]
+      },
+      {
+        title: "2. Aristotle's Student",
+        sub: "Learning beyond the battlefield",
+        img: I.scholar,
+        heading: "The Education of a King",
+        body: [
+          "As a young man, Alexander received instruction from Aristotle, one of the most influential philosophers of ancient Greece. His education included subjects associated with philosophy, literature, politics, and the natural world.",
+          "Ancient sources connect Alexander with a strong admiration for Greek literature, especially the epic stories attributed to Homer. Education alone did not make him a successful commander, but it formed part of the cultural world that shaped his ambitions and the way he presented himself."
+        ]
+      },
+      {
+        title: "3. Becoming King",
+        sub: "A kingdom in uncertain times",
+        img: I.king,
+        heading: "Alexander Takes the Throne",
+        body: [
+          "In 336 BCE, King Philip II was assassinated. Alexander became king of Macedonia at about twenty years of age. His position was not automatically secure, and he had to establish authority among powerful nobles, soldiers, and neighboring communities.",
+          "Alexander moved quickly to strengthen his rule and maintain Macedonia's influence over Greek states. He then prepared to continue his father's planned campaign against the Persian Empire, one of the most powerful states of the ancient world."
+        ]
+      },
+      {
+        title: "4. Crossing into Asia",
+        sub: "The beginning of a great campaign",
+        img: I.caravan,
+        heading: "Alexander Enters the Persian World",
+        body: [
+          "In 334 BCE, Alexander led his army across the Hellespont into Asia Minor. His campaign challenged the Achaemenid Persian Empire, which controlled extensive territories and had considerable resources.",
+          "At the Battle of the Granicus, Alexander won an early victory against Persian forces. The result helped him secure parts of Asia Minor and gave momentum to his invasion. His army included cavalry, infantry, and experienced commanders who played essential roles in the campaign."
+        ]
+      },
+      {
+        title: "5. The Battle of Issus",
+        sub: "A major clash with Persia",
+        img: I.king,
+        heading: "Alexander Faces King Darius III",
+        body: [
+          "In 333 BCE, Alexander fought Persian king Darius III near Issus. The battle was a major turning point in the invasion. Alexander's forces defeated the Persian army, and Darius withdrew from the battlefield.",
+          "The victory strengthened Alexander's position and gave him access to important territories. Darius remained a serious opponent, however, and the Persian Empire was far from defeated. Alexander continued to campaign rather than treating one victory as the end of the war."
+        ]
+      },
+      {
+        title: "6. Egypt and Alexandria",
+        sub: "A city that would shape history",
+        img: I.market,
+        heading: "Alexander in Egypt",
+        body: [
+          "Alexander entered Egypt in 332 BCE, where Persian rule had become unpopular among some groups. He was welcomed by important local authorities and recognized in Egyptian religious traditions as a legitimate ruler.",
+          "In 331 BCE, he founded Alexandria on the Mediterranean coast. The city later became a major center of trade, scholarship, and cultural exchange. Its famous library and scholarly institutions developed after Alexander's lifetime, especially under the Ptolemaic rulers who followed him."
+        ]
+      },
+      {
+        title: "7. The Battle of Gaugamela",
+        sub: "The struggle for the Persian Empire",
+        img: I.king,
+        heading: "The Decisive Battle",
+        body: [
+          "In 331 BCE, Alexander and Darius III met at Gaugamela, in what is now northern Iraq. The Persian army was large and included cavalry and chariots, while Alexander relied on disciplined troops and carefully coordinated movements.",
+          "Alexander won a decisive victory, leaving Darius unable to maintain control over the empire's central territories. Alexander subsequently entered major Persian cities, including Babylon, Susa, and Persepolis. The conquest was a major achievement, but governing such a vast region presented new difficulties."
+        ]
+      },
+      {
+        title: "8. Eastward Across Central Asia",
+        sub: "Campaigns beyond Persia",
+        img: I.caravan,
+        heading: "A Difficult Journey East",
+        body: [
+          "Alexander continued his campaigns through regions of Central Asia, including Bactria and Sogdiana. These territories presented different challenges from the large set-piece battles he had fought earlier. Local resistance, difficult landscapes, and long supply lines made the campaigns demanding.",
+          "Alexander also founded settlements and established new political arrangements. His forces included people from many backgrounds as the empire expanded. These campaigns show that conquest was not simply a sequence of battles; it also required negotiations, garrisons, logistics, and efforts to maintain control."
+        ]
+      },
+      {
+        title: "9. Reaching India",
+        sub: "The Battle of the Hydaspes",
+        img: I.caravan,
+        heading: "Alexander at the Edge of His Campaign",
+        body: [
+          "In 326 BCE, Alexander crossed the Hydaspes River, now known as the Jhelum, and fought King Porus in the region of the Indian subcontinent. The battle was difficult, especially because of the river conditions and the presence of war elephants in Porus's army.",
+          "Alexander won, but he reportedly treated Porus with respect and allowed him to continue ruling as a subordinate ally. When Alexander's soldiers later refused to advance farther east, Alexander agreed to turn back. The decision reflected the exhaustion of an army that had been campaigning for years."
+        ]
+      },
+      {
+        title: "10. The Death and Legacy",
+        sub: "An empire after Alexander",
+        img: I.king,
+        heading: "The End of Alexander's Journey",
+        body: [
+          "Alexander returned west and reached Babylon, where he died in 323 BCE at the age of thirty-two. Ancient sources describe his final illness, but the precise cause of his death remains uncertain. He left no settled arrangement that successfully kept his empire united.",
+          "After his death, his commanders fought over the territories, creating several Hellenistic kingdoms. Greek language, art, and institutions spread and interacted with local traditions across parts of Asia and Egypt. Alexander's empire did not last as one state, but the cultural exchanges associated with his campaigns shaped the ancient world for generations."
+        ]
+      }
+    ]
+  },
+  {
+    id: "sinbad",
+    title: "Sinbad the Sailor",
+    cat: "Trade & Exploration",
+    desc: "Join Sinbad on his first sea voyage, from a terrifying shipwreck to an unexpected journey home.",
+    img: I.caravan,
+    chapters: [
+      {
+        title: "1. A New Beginning",
+        sub: "Setting sail from Baghdad",
+        img:"https://picturetolink.com/i/S06ODZOReq.jpg",
+        heading: "A Merchant's Dream",
+        body: [
+          "Sinbad was a merchant from Baghdad who wanted to rebuild his fortune. He bought goods for trade and boarded a ship with other merchants.",
+          "As the ship sailed into the open sea, Sinbad dreamed of discovering distant lands. He had no idea how dangerous his first voyage would become."
+        ]
+      },
+      {
+        title: "2. The Living Island",
+        sub: "A strange discovery",
+        img:"https://picturetolink.com/i/SKX6stiYUt.jpg",
+        heading: "An Island That Moved",
+        body: [
+          "After many days at sea, the sailors spotted what looked like a green island. They went ashore and began preparing food.",
+          "Suddenly, the ground shook. The captain shouted that it was actually a giant sea creature resting on the water. It began to move, and the sailors rushed toward the ship."
+        ]
+      },
+      {
+        title: "3. Lost at Sea",
+        sub: "Alone in the waves",
+        img:"https://picturetolink.com/i/hiuGrRsxD1.jpg",
+        heading: "A Fight to Survive",
+        body: [
+          "Sinbad fell into the ocean as the giant creature disappeared beneath the waves. The ship sailed away without him.",
+          "He grabbed a piece of floating wood and held on tightly. Surrounded by the endless sea, he struggled to stay alive."
+        ]
+      },
+      {
+        title: "4. A Strange Shore",
+        sub: "Finding land again",
+        img: "https://picturetolink.com/i/YBhLxZgGOY.jpg",
+        heading: "The Island Ahead",
+        body: [
+          "After drifting for a long time, Sinbad reached the shore of an unfamiliar island. Exhausted, he rested on the sand.",
+          "When he regained his strength, he began exploring. He needed fresh water, food, and a way to escape the island."
+        ]
+      },
+      {
+        title: "5. The King's Horses",
+        sub: "A surprising encounter",
+        img: "https://picturetolink.com/i/uls6K0QKGe.jpg",
+        heading: "People on the Island",
+        body: [
+          "While exploring, Sinbad discovered horses belonging to the island's king. The animals were being cared for by the king's servants.",
+          "One of the men noticed Sinbad and listened to his story. Realizing that he was a stranded traveler, the man offered to take him to the royal court."
+        ]
+      },
+      {
+        title: "6. Before the King",
+        sub: "A chance to begin again",
+        img: "https://picturetolink.com/i/Gx2vzYnhjF.jpg",
+        heading: "The King's Welcome",
+        body: [
+          "Sinbad was brought before King Mihrjan. He explained how his ship had left him behind and how he had struggled to reach the island.",
+          "The king listened and welcomed him. Sinbad stayed in the kingdom and learned about the people and their way of life."
+        ]
+      },
+      {
+        title: "7. A Ship from Home",
+        sub: "An unexpected reunion",
+        img: "https://picturetolink.com/i/M6OTX5Gyjn.jpg",
+        heading: "The Ship Returns",
+        body: [
+          "One day, a merchant ship arrived at the island. Sinbad recognized it as the very ship that had carried him away from Baghdad.",
+          "He approached the captain and explained who he was. The captain was surprised to discover that Sinbad had survived the terrible accident."
+        ]
+      },
+      {
+        title: "8. His Lost Goods",
+        sub: "A fortune recovered",
+        img: "https://picturetolink.com/i/oV76sCnm6H.jpg",
+        heading: "The Merchant's Treasure",
+        body: [
+          "Sinbad discovered that his trading goods had been kept aboard the ship. The captain returned them to him after recognizing their rightful owner.",
+          "Sinbad was grateful. He had lost nearly everything at sea, but now he had another chance to rebuild his fortune."
+        ]
+      },
+      {
+        title: "9. The Journey Home",
+        sub: "Leaving the island behind",
+        img:"https://picturetolink.com/i/LXpkPljFNj.jpg",
+        heading: "Back Across the Sea",
+        body: [
+          "With his goods recovered, Sinbad continued his journey aboard the merchant ship. The voyage took him through distant ports and trading towns.",
+          "At last, he reached Baghdad. He had survived a frightening adventure and returned with valuable experience and renewed hope."
+        ]
+      },
+      {
+        title: "10. The First Voyage Ends",
+        sub: "A lesson in courage",
+        img: "https://picturetolink.com/i/N4Wo8kc0ow.jpg",
+        heading: "A New Chapter in Life",
+        body: [
+          "Sinbad returned home with his fortune restored. His first voyage had taught him that the sea could bring both terrible danger and unexpected opportunities.",
+          "Although he was happy to be home, his love of adventure remained. One day, he would set sail again to discover what lay beyond the horizon."
+        ]
+      }
+    ]
+  }
+];
+
+// Calculate reading time from chapter text
+stories.forEach(s=>{
+  let total=0;
+
+  s.chapters.forEach(c=>{
+    const w=c.body.join(" ").split(/\s+/).length;
+    const m=Math.max(1,Math.round(w/200));
+    c.time=m+" min read";
+    total+=m;
+  });
+
+  s.time=total+" min read";
+});
+
+const cats=[
+  ["Ancient Civilizations","The Golden Age of Baghdad",I.baghdad],
+  ["Kings & Empires","Great rulers, dynasties and kingdoms",I.rome],
+  ["Famous People","Leaders, thinkers and explorers",I.king],
+  ["Wars & Discoveries","Battles, innovations and turning points",I.caravan],
+  ["Culture & Daily Life","Food, clothing, art, religion and people",I.market],
+  ["Trade & Exploration","Journeys and global connections",I.caravan]
+];
+
+/* SVG icons */
+const IC={
+  home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+  grid:'<rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/>',
+  bookmark:'<path d="M6.5 3.5h11v17l-5.5-4.2-5.5 4.2z"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+  back:'<path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/>',
+  close:'<path d="M6 6l12 12M18 6L6 18"/>',
+  book:'<path d="M12 6.5C9.8 5 6.8 4.6 3.8 5.2v13c3-.6 6 0 8.2 1.5 2.2-1.5 5.2-2.1 8.2-1.5v-13c-3-.6-6-.2-8.2 1.3z"/><path d="M12 6.5v13"/>'
+};
+
+function ic(n,filled,size){
+  return `<svg width="${size||22}" height="${size||22}" viewBox="0 0 24 24" fill="${filled?"currentColor":"none"}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]||""}</svg>`;
+}
+
+document.querySelectorAll("[data-ic]").forEach(e=>{
+  e.innerHTML=ic(
+    e.dataset.ic,
+    false,
+    e.dataset.size||(e.classList.contains("ni")?24:22)
+  );
+});
+
+let sid="baghdad";
+let ci=0;
+let cur="welcome";
+let hist=[];
+let toastTimer;
+
+/* Hide broken images */
+document.addEventListener("error",e=>{
+  if(e.target.tagName==="IMG"){
+    e.target.style.visibility="hidden";
+  }
+},true);
+
+function go(id,nopush){
+  if(!nopush&&cur!==id){
+    hist.push(cur);
+  }
+
+  cur=id;
+
+  document.querySelectorAll(".screen").forEach(x=>{
+    x.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  document.getElementById("nav").style.display=
+    ["home","categories","bookmarks"].includes(id)?"grid":"none";
+
+  document.querySelectorAll(".nav-item").forEach(b=>{
+    b.classList.toggle("active",b.dataset.page===id);
+  });
+
+  if(id==="bookmarks"){
+    renderSaved();
+  }
+
+  window.scrollTo({top:0,behavior:"auto"});
+}
+
+function tab(id){
+  hist=[];
+  go(id,true);
+}
+
+function back(){
+  go(hist.pop()||"home",true);
+}
+
+function getStory(){
+  return stories.find(s=>s.id===sid)||stories[0];
+}
+
+function getChapter(){
+  return getStory().chapters[ci]||getStory().chapters[0];
+}
+
+function row(s){
+  return `<button class="story-row" onclick="openStory('${s.id}')">
+    <img class="thumb" src="${s.img}" alt="">
+    <span style="flex:1;min-width:0">
+      <h3>${s.title}</h3>
+      <p>${s.cat}</p>
+      <span class="meta">${s.time}</span>
+    </span>
+    <span class="arrow">›</span>
+  </button>`;
+}
+
+function renderHome(){
+  document.getElementById("featured-list").innerHTML=
+    stories.filter(s=>s.id!=="baghdad").map(row).join("");
+}
+
+function renderCats(){
+  document.getElementById("category-grid").innerHTML=cats.map(c=>`
+    <button class="category-card" onclick="openCategory('${c[0].replace(/'/g,"\\'")}')">
+      <img src="${c[2]}" alt="">
+      <div class="cat-copy">
+        <h3>${c[0]}</h3>
+        <p>${c[1]}</p>
+      </div>
+    </button>
+  `).join("");
+}
+
+function openCategory(name){
+  const list=stories.filter(s=>s.cat===name);
+
+  if(list.length===1){
+    openStory(list[0].id);
+    return;
+  }
+
+  if(!list.length){
+    toast("Stories in this category are coming soon.");
+    return;
+  }
+
+  document.getElementById("catlist-title").textContent=name;
+  document.getElementById("catlist-items").innerHTML=list.map(row).join("");
+  go("catlist");
+}
+
+function openStory(id){
+  sid=id;
+  ci=0;
+
+  const s=getStory();
+
+  document.getElementById("story-title").textContent=s.title;
+  document.getElementById("story-cover").style.visibility="visible";
+  document.getElementById("story-cover").src=s.img;
+  document.getElementById("story-desc").textContent=s.desc;
+
+  document.getElementById("chapter-count").textContent=
+    s.chapters.length+" part"+(s.chapters.length===1?"":"s");
+
+  document.getElementById("chapters").innerHTML=s.chapters.map((c,i)=>`
+    <button class="chapter-row" onclick="openChapter(${i})">
+      <img src="${c.img}" alt="">
+      <span style="flex:1;min-width:0">
+        <strong>${c.title}</strong>
+        <small>${c.sub}<br>${c.time}</small>
+      </span>
+      <span class="arrow">›</span>
+    </button>
+  `).join("");
+
+  go("story");
+}
+
+function openChapter(i){
+  ci=i;
+  renderReader();
+  go("reader");
+
+  requestAnimationFrame(()=>{
+    const t=document.getElementById("chapter-"+i);
+
+    if(t){
+      document.documentElement.style.scrollBehavior="auto";
+      t.scrollIntoView({block:"start"});
+      document.documentElement.style.scrollBehavior="";
+    }
+  });
+}
+
+function renderReader(){
+  const s=getStory();
+
+  document.getElementById("reader-chapters").innerHTML=
+    s.chapters.map((c,i)=>`
+      <article class="reader-chapter" id="chapter-${i}">
+        <h2>${c.title}</h2>
+        <img class="reader-image" src="${c.img}" alt="">
+        <p class="caption">Illustrative image</p>
+        <h3 class="reader-title">${c.heading}</h3>
+        <div class="reader-text">
+          ${c.body.map(p=>`<p>${p}</p>`).join("")}
+        </div>
+        <button class="text-btn" id="save-${i}" onclick="toggleChapterBookmark(${i})"></button>
+      </article>
+    `).join("");
+
+  updateReaderUI();
+}
+
+function updateReaderUI(){
+  const list=bookmarks();
+
+  getStory().chapters.forEach((c,i)=>{
+    const b=document.getElementById("save-"+i);
+
+    if(b){
+      const sv=list.includes(sid+":"+i);
+      b.innerHTML=ic("bookmark",sv,18)+(sv?"Saved":"Save Bookmark");
+    }
+  });
+
+  document.getElementById("reader-top").textContent=
+    getChapter().title;
+
+  document.getElementById("bookmark-button").innerHTML=
+    ic("bookmark",list.includes(sid+":"+ci),22);
+}
+
+function toggleChapterBookmark(i){
+  const key=sid+":"+i;
+  let list=bookmarks();
+
+  if(list.includes(key)){
+    list=list.filter(x=>x!==key);
+    toast("Bookmark removed");
+  }else{
+    list.push(key);
+    toast("Saved to Bookmarks");
+  }
+
+  try{
+    localStorage.setItem("timetales_saved",JSON.stringify(list));
+  }catch(e){}
+
+  updateReaderUI();
+}
+
+function bookmarks(){
+  try{
+    return JSON.parse(localStorage.getItem("timetales_saved")||"[]");
+  }catch(e){
+    return [];
+  }
+}
+
+/* Update reader title when a different chapter is visible */
+window.addEventListener("scroll",()=>{
+  if(cur!=="reader")return;
+
+  let k=0;
+
+  document.querySelectorAll(".reader-chapter").forEach((el,i)=>{
+    if(el.getBoundingClientRect().top<=90){
+      k=i;
+    }
+  });
+
+  if(k!==ci){
+    ci=k;
+    updateReaderUI();
+  }
+},{passive:true});
+
+function renderSaved(){
+  const list=bookmarks();
+  const el=document.getElementById("saved-list");
+
+  const html=list.map(key=>{
+    const [id,n]=key.split(":");
+    const s=stories.find(x=>x.id===id);
+    const c=s&&s.chapters[Number(n)];
+
+    if(!s||!c)return "";
+
+    return `<button class="story-row" onclick="sid='${id}';openChapter(${Number(n)})">
+      <img class="thumb" src="${c.img}" alt="">
+      <span style="flex:1;min-width:0">
+        <h3>${c.title}</h3>
+        <p>${s.title}</p>
+        <span class="meta">${c.time}</span>
+      </span>
+      <span class="arrow">›</span>
+    </button>`;
+  }).join("");
+
+  el.innerHTML=html||'<div class="empty"><b>No bookmarks yet</b>Open a chapter and tap the bookmark icon to save it here.</div>';
+}
+
+function toggleSearch(force){
+  if(cur!=="home"){
+    tab("home");
+  }
+
+  const el=document.getElementById("search-area");
+  const show=force===undefined?el.style.display==="none":force;
+
+  el.style.display=show?"flex":"none";
+
+  if(show){
+    document.getElementById("search-input").focus();
+  }else{
+    document.getElementById("search-input").value="";
+    renderHome();
+  }
+}
+
+function renderSearch(q){
+  const v=q.trim().toLowerCase();
+
+  const a=stories.filter(s=>
+    (s.title+" "+s.cat+" "+s.desc).toLowerCase().includes(v)
+  );
+
+  document.getElementById("featured-list").innerHTML=
+    (v?a:stories.filter(s=>s.id!=="baghdad")).map(row).join("")
+    ||'<div class="empty">No stories found. Try another search.</div>';
+}
+
+function toast(message){
+  const e=document.getElementById("toast");
+
+  e.textContent=message;
+  e.style.display="block";
+
+  clearTimeout(toastTimer);
+
+  toastTimer=setTimeout(()=>{
+    e.style.display="none";
+  },2100);
+}
+
+/* Initial rendering */
+renderHome();
+renderCats();
+</script>
+</body>
+</html>
